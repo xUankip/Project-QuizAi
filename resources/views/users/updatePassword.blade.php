@@ -1,4 +1,4 @@
-@extends('layouts.layour')
+@extends('layouts.layouts')
 
 
 @if(session('successful'))

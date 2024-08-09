@@ -1,4 +1,4 @@
-@extends('layouts.layour')
+@extends('layouts.layouts')
 
 
 @if(session('successful'))
@@ -35,11 +35,11 @@
     <!-- Checkbox -->
     <div class="form-check d-flex justify-content-center mb-4">
         <input
-            class="form-check-input me-2"
-            type="checkbox"
-            value=""
-            id="form6Example8"
-            checked
+                class="form-check-input me-2"
+                type="checkbox"
+                value=""
+                id="form6Example8"
+                checked
         />
         <label class="form-check-label" for="form6Example8"> Create an account? </label>
     </div>

@@ -25,8 +25,8 @@ return new class extends Migration {
             $table->string('name', 255)->notNull();
             $table->string('description', 255)->nullable();
             $table->string('thumbnail_url', 255)->nullable();
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

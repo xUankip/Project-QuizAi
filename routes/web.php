@@ -38,6 +38,19 @@ Route::get('/user/game',[TopicController::class,'viewGame'])->name('game');
 Route::get('/quiz', [QuizController::class, 'showForm']);
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // điều khoản
 Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name('termsOfService');
 //Route::get('/chat', function (){
@@ -137,7 +150,4 @@ Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name
 //    }
 //});
 
-
-Route::get('/testAI',[QuestionController::class,'index'])->name('privacyPolicy');
-Route::post('/testAI1',[QuestionController::class,'questionInGame']);
-Route::get('/testAI2',[QuestionController::class,'questionList']);
+Route::post('/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');

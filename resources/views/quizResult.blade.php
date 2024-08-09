@@ -4,7 +4,7 @@
     <title>Quiz Result</title>
 </head>
 <body>
-<h1>Quiz cho chủ đề: {{ $topic }}</h1>
+<h1>Quiz cho chủ đề: {{$quiz}}</h1>
 <ul>
     @foreach ($questions as $question)
         <div class="question">

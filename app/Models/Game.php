@@ -12,5 +12,6 @@ class Game extends Model
         'name',
         'description',
         'cover_img',
+        'topic_id'
     ];
 }

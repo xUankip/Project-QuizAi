@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <link rel= "stylesheet" href="/dist/css/adminlte.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
@@ -29,283 +29,61 @@
         }
     </style>
 </head>
-<body>
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>QUESTION</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">FAQ</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- Main content -->
-    <section class="content">
+<form action="{{route('saveAll')}}" method="post">
+    @csrf
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <input>
+            <input name="topic" value="{{$topic}}">
+            <input name="game" value="{{$game}}">
+            @foreach($decoded->quiz as $quiz)
+                <div class="col-12">
+                    <div class="card collapsed-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Title</h3>
                             <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                                 <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
                         </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <input>
-                            <input>
-                            <input>
-                            <input>
+                        <div class="card-body" style="display: none;">
+                            Nội dung câu hỏi
+                            <input name="questions" type="text" class="form-control" id="exampleInputEmail1" value="{{$quiz->question}}">
                         </div>
+                            @foreach($quiz->answers as $answers)
+                                <div class="card-footer" style="display: none;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radio1">
+                                        <input type="hidden" name="answer_content" value="{{json_encode($answers)}}">
+                                        <input type="hidden" name="correct_answer" value="{{json_encode($quiz->correct_answer)}}">
+                                        @if($answers == $quiz->correct_answer)
+                                        <label class="form-check-label">
+                                            <input type="text" name="correct_answer" class="form-control" id="exampleInputEmail1"style="color: red; font-weight: bolder" value="{{$answers}}">
+                                        </label>
+                                        @else
+                                            <label class="form-check-label">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" value="{{$answers}}">
+                                            </label>
+                                        @endif
+                                    </div>
+                                </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>a. vip</p>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12" id="accordion">
-                <div class="card card-primary card-outline">
-                    <a class="d-block" data-toggle="collapse" href="#collapseOne">
-                        <div class="card-header" id="cardHeader">
-                            <h4 class="card-title w-100">
-                                "Trong bối cảnh phát triển bền vững và sự thay đổi khí hậu toàn cầu, các chính phủ và tổ chức quốc tế đã đề ra nhiều chiến lược nhằm giảm thiểu tác động tiêu cực lên môi trường. Vui lòng mô tả các biện pháp chính mà các quốc gia đang áp dụng để giảm lượng khí thải carbon, bảo vệ tài nguyên thiên nhiên, và tăng cường sử dụng năng lượng tái tạo. Bạn cũng nên thảo luận về những thách thức chính mà các quốc gia đang đối mặt trong việc thực hiện các biện pháp này và đề xuất các giải pháp tiềm năng để vượt qua những thách thức đó."
-                            </h4>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <input>a. vip</input>
-                            <p>b. pro</p>
-                            <p>c. top 1</p>
-                            <p>d. ok</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Edit
-            </a>
-            <a class="btn btn-app">
-                <i class="fas fa-save"></i> Save
-            </a>
-            <a class="btn btn-app">
-                <i class="fas fa-trash"></i> delete
-            </a>
-            <a class="btn btn-app">
-                <i class="fas fa-table"></i> all
-            </a>
+            @endforeach
         </div>
-        <div class="row">
-            <div class="col-12 mt-3 text-center">
-                <p class="lead">
-                    <a href="contact-us.html">Contact us</a>,
-                    if you found not the right anwser or you have a other question?<br />
-                </p>
-            </div>
+        <button type="submit" class="btn btn-block btn-outline-primary col-3">Save</button>
+        <button type="button" class="btn btn-block btn-outline-danger col-3">Cancel</button>
+    </div>
+</form>
 
-        </div>
-    </section>
-</div>
-<script>
-    $(document).ready(function(){
-        $('#cardHeader').on('click', function() {
-            $(this).find('h4').toggleClass('expanded');
-        });
-    });
-</script>
+
 <script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/dist/js/demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-</body>
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/dist/js/adminlte.min.js?v=3.2.0"></script>
 </html>
 

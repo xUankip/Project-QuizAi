@@ -9,15 +9,13 @@
         {{ session('error') }}
     </div>
 @endif
-<form action="/quiz" method="POST">
+<form action="{{route('generateQuiz')}}" method="POST">
     @csrf
     <div>
-        <label for="nd">Nhập nội dung</label>
+        <label for="topic">Nhập tên chủ đề : </label>
+        <input type="text" id="nd" name="topic" required>
+        <label for="nd">Nhập nội dung muốn tạo caau hỏi </label>
         <input type="text" id="nd" name="nd" required>
-    </div>
-    <div>
-        <label for="question_count">Số lượng câu hỏi</label>
-        <input type="number" id="question_count" name="question_count" min="1">
     </div>
     <button type="submit">Tạo Quiz</button>
 </form>
