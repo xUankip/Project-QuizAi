@@ -117,7 +117,7 @@ class UserController extends Controller
             $users->update($data);
             return redirect()->back()->with('successful', 'lưu thành công');
         }
-        return back()->with('erroPassword', 'lỗi mật khẩu');
+        return back()->with('errorPassword', 'lỗi mật khẩu');
     }
     // topic
 //    public function viewTopic()
