@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -60,40 +61,21 @@
         }
     </style>
 </head>
-<form action="{{ route('saveAll') }}" method="post">
-    @csrf
-    <div class="container">
-        <div class="row">
-            <input name="topic" value="{{ $game->topic->name }}">
-            <input name="game" value="{{ $game }}" type="hidden">
-            @foreach($game->questions as $index => $question)
-                <div class="col-12">
-                    <div class="card">
-                        <details>
-                            <summary>{{ $question->content }}</summary>
-                            <div class="card-body">
-                                Nội dung câu hỏi
-                                <input name="questions[]" type="text" class="form-control" value="{{ $question->content }}" >
-                                @foreach($question->answers as $key => $answer)
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">
-                                        <label class="form-check-label">
-                                            <input type="text" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}" class="form-control" value="{{ $answer->answer_content }}">
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="card-button">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <button type="submit" class="btn btn-block btn-outline-primary col-3">Continue</button>
-        <button type="submit" class="btn btn-block btn-outline-primary col-3">New create</button>
+<form action="" method="POST">
+    <div class="card-body">
+        Nội dung câu hỏi
+        <input name="questions[]" type="text" class="form-control" value="{{ $question->content }}" >
+        @foreach($question->answers as $key => $answer)
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">
+                <label class="form-check-label">
+                    <input type="text" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}" class="form-control" value="{{ $answer->answer_content }}">
+                </label>
+            </div>
+        @endforeach
+    </div>
+    <div class="card-button">
+        <button type="submit" class="btn btn-primary">Next</button>
     </div>
 </form>
 <script src="/plugins/jquery/jquery.min.js"></script>
