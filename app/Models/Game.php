@@ -14,4 +14,14 @@ class Game extends Model
         'cover_img',
         'topic_id'
     ];
+
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo('App\Models\Topic');
+    }
 }

@@ -37,13 +37,13 @@
     @csrf
     <div class="container-fluid">
         <div class="row">
-            <input name="topic" value="{{ $topic }}" type="hidden">
+            <input name="topic" value="{{ $game->topic->name }}">
             <input name="game" value="{{ $game }}" type="hidden">
-            @foreach($decoded['quiz'] as $index => $quiz)
+            @foreach($game->questions as $index => $question)
                 <div class="col-12">
                     <div class="card collapsed-card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $quiz['question'] }}</h3>
+                            <h3 class="card-title">{{ $question->content }}</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-plus"></i>
@@ -55,19 +55,13 @@
                         </div>
                         <div class="card-body">
                             Nội dung câu hỏi
-                            <input name="questions[]" type="text" class="form-control" value="{{ $quiz['question'] }}" >
-                            @foreach($quiz['answers'] as $key => $answer)
+                            <input name="questions[]" type="text" class="form-control" value="{{ $question->content }}" >
+                            @foreach($question->answers as $key => $answer)
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">
-                                    @if($answer == $quiz['correct_answer'])
                                     <label class="form-check-label">
-                                        <input type="text" style="color: green" class="form-control" value="{{ $answer }}">
+                                        <input type="text" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}" class="form-control" value="{{ $answer->answer_content }}">
                                     </label>
-                                    @else
-                                        <label class="form-check-label">
-                                            <input type="text" class="form-control" value="{{ $answer }}">
-                                        </label>
-                                    @endif
                                 </div>
                             @endforeach
                         </div>

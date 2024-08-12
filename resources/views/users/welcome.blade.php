@@ -1,6 +1,5 @@
 @extends('layouts.index')
 
-
 <div id="main">
     <div id="header">
         <ul class="nav-pc" id="nav">
