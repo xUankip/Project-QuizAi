@@ -42,15 +42,6 @@ Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQui
 
 
 
-
-
-
-
-
-
-
-
-
 // điều khoản
 Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name('termsOfService');
 //Route::get('/chat', function (){
