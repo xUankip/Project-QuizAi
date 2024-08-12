@@ -20,6 +20,14 @@ class QuizController extends Controller
         return view('users.create_quiz');
     }
 
+    public function showGame($id)
+    {
+        // get game by id.
+        $game = Game::findOrFail($id);
+        if(!$game) return;
+        return view('games.detail', compact('game'));
+    }
+
     public function generateQuiz(Request $request)
     {
         $request->validate([
@@ -84,8 +92,8 @@ class QuizController extends Controller
                     $answer->save();
                 }
             }
-
-            return view('questions.question-list', compact('topic', 'game', 'decoded'));
+            return redirect('/quiz/' . $game->id);
+//            return view('questions.question-list', compact('topic', 'game', 'decoded'));
         } catch (Exception $e) {
             return back()->with('error', 'An error occurred while generating the quiz: ' . $e->getMessage());
         }

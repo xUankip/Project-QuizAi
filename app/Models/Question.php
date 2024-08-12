@@ -17,4 +17,9 @@ class Question extends Model
         'score',
         'create_by',
     ];
+
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answer');
+    }
 }

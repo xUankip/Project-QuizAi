@@ -37,9 +37,7 @@ Route::get('/user/game',[TopicController::class,'viewGame'])->name('game');
 
 Route::get('/quiz', [QuizController::class, 'showForm']);
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
-
-
-
+Route::get('/quiz/{id}', [QuizController::class, 'showGame'])->name('showGame');
 
 
 // điều khoản
