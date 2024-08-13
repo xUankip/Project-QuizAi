@@ -33,7 +33,7 @@ class QuizController extends Controller
         $request->validate([
             'topic' => 'required',
             'game' => 'required',
-            'number' => 'required|string',
+            'number' => 'required|integer|min:5|max:20',
         ]);
 
         $topicName = $request->input('topic');
@@ -54,7 +54,6 @@ class QuizController extends Controller
                     ['role' => 'user', 'content' => $prompt],
                 ],
             ]);
-
             $quizData = $response['choices'][0]['message']['content'];
             $decoded = json_decode($quizData, true);
             // Check if topic exists, if not create it

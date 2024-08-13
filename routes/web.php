@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GameController;
+use App\Models\Game;
 use App\Models\Users;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -32,13 +34,13 @@ Route::post('/user/topic',[TopicController::class, 'saveIdType'])->name('saveId'
 
 Route::get('/user/game',[TopicController::class,'viewGame'])->name('game');
 
+Route::get('/game/{id}', [GameController::class, 'start'])->name('start');
 
 //test AI
 
 Route::get('/quiz', [QuizController::class, 'showForm']);
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
 Route::get('/quiz/{id}', [QuizController::class, 'showGame'])->name('showGame');
-
 
 // điều khoản
 Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name('termsOfService');
