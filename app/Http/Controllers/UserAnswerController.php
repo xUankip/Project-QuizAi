@@ -9,10 +9,13 @@ class UserAnswerController extends Controller
     //
     public function topUser()
     {
+        $game_id = 8;
         // Truy vấn đến bảng users
         $topUsers = DB::table('user')
             // Chọn cột của user và cột total_score trong bảng user_answers
             ->select('user.id', 'user.name', DB::raw('SUM(user_answer.score) as total_score'))
+            ->where('user_answer.game_id',$game_id)
+
             // Kết hợp bảng users với bảng user_answer để lấy điểm số của từng người chơi
             ->join('user_answer', 'user.id', '=', 'user_answer.user_id')
             // Nhóm kết quả theo các cột cụ thể
@@ -27,6 +30,7 @@ class UserAnswerController extends Controller
     {
         // lấy id
         $id = 5;
+        $game_id = 8;
         $userScore = DB::table('user')
             // Chọn cột của user và cột total_score trong bảng user_answers
             ->select('user.id', 'user.name', DB::raw('SUM(user_answer.score) as total_score'))
@@ -35,6 +39,7 @@ class UserAnswerController extends Controller
             // Nhóm kết quả theo các cột cụ thể
             ->groupBy('user.id', 'user.name')
             ->where('user.id',$id)
+            ->where('user_answer.game_id',$game_id)
             ->first();
 
         return view('user_score', ['userScore' => $userScore]);

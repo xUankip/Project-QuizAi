@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\GameController;
 
-use App\Models\Game;
-use App\Models\Users;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserAnswerController;
 
 
 Route::get('/', [UserController::class,'viewIndex'])->name('home');
@@ -36,21 +36,20 @@ Route::post('/user/topic',[TopicController::class, 'saveIdType'])->name('saveId'
 Route::get('/user/game',[TopicController::class,'viewGame'])->name('game');
 
 Route::get('/game/{id}', [GameController::class, 'start'])->name('start');
+Route::post('/game/{id}', [GameController::class, 'checkAccount'])->name('start.post');
 
 
 
 Route::get('/quiz', [QuizController::class, 'showForm']);
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
-Route::get('/quiz/{id}', [QuizController::class, 'showGame'])->name('showGame');
 
-Route::get('/quiz/viewPlayUsers/{id}', [QuizController::class, 'viewPlayUsers']);
+Route::get('/quiz/viewPlayUsers', [QuizController::class, 'viewPlayUsers'])->name('viewPlayUsers');
 Route::post('/quiz/checkAnswer', [QuizController::class, 'checkAnswer'])->name('checkAnswer');
 
 // điều khoản
 Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name('termsOfService');
 
-Route::post('/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');
-
-
 // người chơi
 
+Route::get('/top-users',[UserAnswerController::class,'topUser'])->name('topUsers');
+Route::get('/user-score',[UserAnswerController::class,'userScore'])->name('userScore');
