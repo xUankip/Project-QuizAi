@@ -15,7 +15,8 @@ class Question extends Model
 //        'topic_id',
         'correct_answer',
         'score',
-        'create_by',
+        'created_by',
+        'updated_by',
     ];
 
     public function answers()

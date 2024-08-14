@@ -26,7 +26,6 @@ Route::post('/user/update', [UserController::class, 'update'])->name('update.pos
 
 Route::get('/user/update/password', [UserController::class, 'viewUpdatePassword'])->name('updatePassword');
 Route::post('/user/update/password1', [UserController::class, 'updatePassword'])->name('updatePassword.post');
-
 //game
 
 Route::get('/user/topic',[TopicController::class,'viewTopic'])->name('topic');

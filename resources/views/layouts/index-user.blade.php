@@ -30,11 +30,11 @@
                 </a>
                 <ul class="subnav">
                     <li><a href={{route('topic')}}>Tất cả</a></li>
-                    <li><a href={{route('topic')}}>Toán</a></li>
-                    <li><a href={{route('topic')}}>Lý</a></li>
-                    <li><a href={{route('topic')}}>Hóa</a></li>
-                    <li><a href={{route('topic')}}>Anh</a></li>
-                    <li><a href={{route('topic')}}>Sử</a></li>
+{{--                    <li><a href={{route('topic')}}>Toán</a></li>--}}
+{{--                    <li><a href={{route('topic')}}>Lý</a></li>--}}
+{{--                    <li><a href={{route('topic')}}>Hóa</a></li>--}}
+{{--                    <li><a href={{route('topic')}}>Anh</a></li>--}}
+{{--                    <li><a href={{route('topic')}}>Sử</a></li>--}}
                 </ul>
             </li>
             <li><a href="#contact">Liên hệ</a></li>
