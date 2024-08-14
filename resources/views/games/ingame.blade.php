@@ -81,7 +81,7 @@
 {{--    @endif--}}
 {{--@endif--}}
 <div class="card-body">
-    <form action="{{ route('checkAnswer') }}" method="post">
+    <form action="{{ route('checkAnswer')}}" method="post">
         @csrf
         <input type="hidden" name="question_id" value="{{ $currentQuestion->id }}">
         <div class="col-12">
