@@ -17,7 +17,7 @@ class QuizController extends Controller
 {
     public function showForm()
     {
-        return view('users.create_quiz');
+        return view('games.generate');
     }
 
     public function showGame($id)

@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('layout-css/detail.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('layout-css/editgame.css') }}">
+    <title>Demo Admin Page-QuizAI</title>
 </head>
+
 <body>
 <div class="container">
     <!-- Sidebar Section -->
@@ -31,44 +31,25 @@
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
-                <h3>Dashboard</h3>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        person_outline
-                    </span>
-                <h3>Users</h3>
+                <h3>Home</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>Games</h3>
+                <h3>My Games</h3>
+            </a>
+            <a href="#" class="active">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                <h3>Create</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
                         search
                     </span>
                 <h3>Search</h3>
-            </a>
-            <a href="#" class="active">
-                    <span class="material-icons-sharp">
-                        insights
-                    </span>
-                <h3>Analytics</h3>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        mail_outline
-                    </span>
-                <h3>Tickets</h3>
-                <span class="message-count">27</span>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        receipt_long
-                    </span>
-                <h3>History</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
@@ -84,12 +65,6 @@
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
-                        add
-                    </span>
-                <h3>New Login</h3>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
                         logout
                     </span>
                 <h3>Logout</h3>
@@ -97,6 +72,7 @@
         </div>
     </aside>
     <!-- End of Sidebar Section -->
+
     {{--CONTENT--}}
     <div class="main-content">
         <form action="{{ route('saveAll') }}" method="post">
@@ -144,8 +120,6 @@
     </div>
     {{--END CONTENT--}}
 
-
-{{--    RIGHT SECTION--}}
     <!-- Right Section -->
     <div class="right-section">
         <div class="nav">
@@ -154,10 +128,11 @@
                         menu
                     </span>
             </button>
+
             <div class="profile">
                 <div class="info">
                     <p>Hey, <b>Tuan Anh</b></p>
-                    <small class="text-muted">Admin</small>
+                    <small class="text-muted">User</small>
                 </div>
                 <div class="profile-photo">
                     <img src="/images/img6.png">
@@ -167,10 +142,9 @@
         </div>
         <!-- End of Nav -->
     </div>
+    <!-- End Right Section -->
 
 </div>
-{{--    END RIGHT SECTION--}}
-
 <script src="{{ asset('js/detail.js') }}"></script>
 </body>
 </html>
