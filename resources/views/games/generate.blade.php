@@ -90,9 +90,18 @@
                     <label for="exampleInputPassword1">Topic Title</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Topic Title" name="topic">
                 </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="exampleInputEmail1">Number of Question</label>--}}
+{{--                    <input type="number" class="form-control" placeholder="Min 5 Max 20" min="5" step="5" max="20" oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="number">--}}
+{{--                </div>--}}
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Number of Question</label>
-                    <input type="number" class="form-control" placeholder="Min 5 Max 20" min="5" step="5" max="20" oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="number">
+                    <label> Number of Questions</label>
+                    <select class="form-control" name="number">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
                 </div>
             </div>
 

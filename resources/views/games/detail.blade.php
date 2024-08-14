@@ -137,7 +137,7 @@
                 </div>
                 <div class="card-button">
                     <button type="submit" class="button">Continue</button>
-                    <button type="submit" class="button">New create</button>
+                    <button type="submit" class="button">Create More</button>
                 </div>
             </div>
         </form>

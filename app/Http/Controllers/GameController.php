@@ -26,7 +26,7 @@ class GameController extends Controller
     public function checkAccount()
     {
         $gameId = Session::get('gameID');
-        $userId = 1;
+        $userId = 5;
 
         $userHasPlayed = UserAnswer::where('user_id', $userId)
             ->where('game_id', $gameId)

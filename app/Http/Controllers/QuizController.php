@@ -68,7 +68,7 @@ class QuizController extends Controller
             foreach ($decoded['quiz'] as $quizItem) {
                 // Insert question into the question table
                 $question = new Question();
-                $question->game_id = $game->id; // Set the game ID
+                $question->game_id = $game->id;// Set the game ID
                 $question->content = $quizItem['question'];
                 $question->countdown_time = 30; // Example: setting a default countdown time
                 $question->correct_answer = $quizItem['correct_answer'];
@@ -122,7 +122,7 @@ class QuizController extends Controller
         $answer = $request->input('answer_content');
         $game = Game::findOrFail($gameId);
         $questionId = $request->input('question_id'); // Lấy ID câu hỏi từ request
-        $userId = 1;
+        $userId = 5;
         $question = Question::findOrFail($questionId);
 //            $questionId = $question->id;
 

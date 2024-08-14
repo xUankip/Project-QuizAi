@@ -107,7 +107,7 @@ form {
     cursor: pointer;
 }
 
-.answer-options span {
+.answer-options .span {
     padding: 10px;
 }
 

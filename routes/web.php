@@ -37,19 +37,20 @@ Route::get('/user/game',[TopicController::class,'viewGame'])->name('game');
 
 Route::get('/game/{id}', [GameController::class, 'start'])->name('start');
 Route::post('/game/{id}', [GameController::class, 'checkAccount'])->name('start.post');
-
+Route::get('/quiz/viewPlayUsers', [QuizController::class, 'viewPlayUsers'])->name('viewPlayUsers');
+Route::post('/quiz/checkAnswer', [QuizController::class, 'checkAnswer'])->name('checkAnswer');
 
 
 Route::get('/quiz', [QuizController::class, 'showForm']);
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
+Route::get('/quiz/{id}', [QuizController::class, 'showGame'])->name('showGame');
+Route::post('/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');
 
-Route::get('/quiz/viewPlayUsers', [QuizController::class, 'viewPlayUsers'])->name('viewPlayUsers');
-Route::post('/quiz/checkAnswer', [QuizController::class, 'checkAnswer'])->name('checkAnswer');
 
 // điều khoản
 Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name('termsOfService');
 
 // người chơi
 
-Route::get('/top-users',[UserAnswerController::class,'topUser'])->name('topUsers');
-Route::get('/user-score',[UserAnswerController::class,'userScore'])->name('userScore');
+Route::get('/topUsers',[UserAnswerController::class,'topUser'])->name('topUsers');
+Route::get('/userScore',[UserAnswerController::class,'userScore'])->name('userScore');
