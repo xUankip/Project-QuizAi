@@ -19,14 +19,21 @@ class GameController extends Controller
     public function start($id)
     {
         $games = Game::findOrFail($id);
-        Session::put('gameID', $games->id);  // Lưu gameID vào session, không cần gán lại
-        return view('games.start', compact('games'));  // Trả về view với biến $game
+
+        // Tạo link với ID của trò chơi
+        $link = url("127.0.0.1/games/" . $games->id);
+
+        // Lưu gameID vào session
+        Session::put('gameID', $games->id);
+
+        // Trả về view với dữ liệu trò chơi và link
+        return view('games.start', compact('games', 'link'));
     }
 
     public function checkAccount()
     {
         $gameId = Session::get('gameID');
-        $userId = 5;
+        $userId = Session::get('user_id');
 
         $userHasPlayed = UserAnswer::where('user_id', $userId)
             ->where('game_id', $gameId)

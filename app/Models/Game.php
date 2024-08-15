@@ -12,7 +12,9 @@ class Game extends Model
         'name',
         'description',
         'cover_img',
-        'topic_id'
+        'topic_id',
+        'created_by',
+        'updated_by',
     ];
 
     public function questions()

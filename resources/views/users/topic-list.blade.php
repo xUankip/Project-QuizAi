@@ -19,6 +19,10 @@
                     </div>
                 </form>
             @endforeach
+                <form action="{{route('generateQuiz')}}" method="get">
+                    @csrf
+                    <button type="submit">Thêm Topic</button>
+                </form>
             {!! $topic -> links ()!!}
         </div>
 

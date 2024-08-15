@@ -14,6 +14,7 @@ class Answer extends Model
 //        'answer',
         'answer_content	',
         'correct_answer',
-        'created_by'
+        'created_by',
+        'updated_by',
     ];
 }
