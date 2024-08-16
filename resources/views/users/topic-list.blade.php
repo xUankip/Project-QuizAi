@@ -8,7 +8,7 @@
             @foreach($topic as $topics)
                 <form action="{{route('saveId')}}" method="post">
                     @csrf
-                    <input name="type" value="topic">
+                    <input type="hidden" name="type" value="topic">
                     <input name="type_id" value="{{$topics->id}}" style="display: none">
                     <img src="{{$topics->thumbnail_url}}" alt="">
                     <div class="content">
@@ -26,18 +26,5 @@
             {!! $topic -> links ()!!}
         </div>
 
-        <div class="text-center">
-            <button style="margin-left: 50px; float: left;width: 130px;" class="slider__control slider__control--prev"
-                    ng-disabled="count<=1" ng-click="prev()" disabled="disabled"><i
-                        class="ti-arrow-left slder-control-icon" style="margin-right: 10px;"></i> Trước
-            </button>
-            <!-- <ol class="js__slider__pagers slider__pagers"></ol> -->
-            <span ng-model="count" class="ng-pristine ng-untouched ng-valid ng-binding">1</span>
-            <button style="margin-right: 20px; width: 130px; float: right;"
-                    class="slider__control slider__control--next" ng-disabled="count>=4" ng-click="next()">Sau <i
-                        class="ti-arrow-right slder-control-icon" style="margin-left: 10px;"></i></button>
-        </div>
     </div>
-
-
 </article>

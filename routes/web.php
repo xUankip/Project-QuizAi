@@ -40,11 +40,15 @@ Route::get('/quiz/viewPlayUsers', [QuizController::class, 'viewPlayUsers'])->nam
 Route::post('/quiz/checkAnswer', [QuizController::class, 'checkAnswer'])->name('checkAnswer');
 
 
-Route::get('/quiz', [QuizController::class, 'showForm']);
+Route::get('/quiz', [QuizController::class, 'showForm'])->name('showForm');
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
 Route::get('/quiz/{id}', [QuizController::class, 'showGame'])->name('showGame');
+Route::post('/quiz/edit-or-delete', [GameController::class, 'editOrDelete'])->name('editOrDelete');
 Route::post('/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');
 
+// handle question update
+Route::post('/questions/update', [GameController::class, 'updateQuestion'])->name('updateQuestion');
+Route::post('/answers/update', [GameController::class, 'updateAnswer'])->name('updateAnswer');
 
 // điều khoản
 Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name('termsOfService');

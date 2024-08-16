@@ -158,10 +158,11 @@ class QuizController extends Controller
         $user_answer->save();
 
         // Đếm số câu trả lời đúng của người dùng
-        $correctAnswersCount = UserAnswer::where('game_id', $gameId)
-            ->where('user_id', $userId)
-            ->where('score', 10)
-            ->count();
+//        $correctAnswersCount = UserAnswer::where('game_id', $gameId)
+//            ->where('user_id', $userId)
+//            ->where('score', '!=', 0)
+//            ->count();
+
         $currentQuestionIndex = Session::get('currentQuestionIndex');
         $totalQuestions = $game->questions->count();
         // Kiểm tra nếu vẫn còn câu hỏi tiếp theo
@@ -174,7 +175,7 @@ class QuizController extends Controller
             return view('games.ingame', [
                 'game' => $game,
                 'currentQuestion' => $nextQuestion,
-                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', 10)->count(),
+                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', '!=', 0)->count(),
                 'totalQuestions' => $totalQuestions,
             ]);
         } else {

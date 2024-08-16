@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Session;
 
 class TopicController extends Controller
 {
+    public function saveAll()
+    {
+        return ;
+    }
     public function viewTopic()
     {
         $topic = Topic::paginate(1);
@@ -39,6 +43,7 @@ class TopicController extends Controller
                 return redirect()->back()->with('error', 'No games found for this topic.');
             }
         }
+//        dd($type);
     }
 
     public function viewGame()

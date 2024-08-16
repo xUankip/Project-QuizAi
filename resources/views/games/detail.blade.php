@@ -99,45 +99,49 @@
     <!-- End of Sidebar Section -->
     {{--CONTENT--}}
     <div class="main-content">
-        <form action="{{ route('saveAll') }}" method="post">
+        <form action="{{route('editOrDelete')}}" method="post" name="gameForm">
             @csrf
+        </form>
             <div class="container-content">
                 <div class="card-content">
                     <div class="card-header">
                         <h1>Edit your question:</h1>
                         <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
-                        {{--            <input name="topic" value="{{ $game->topic->name }}">--}}
-                        <input name="game" value="{{ $game }}" type="hidden">
                     </div>
                     @foreach($game->questions as $index => $question)
                         <div class="card">
-                            <div class="card-main">
-                                <details>
-                                    <summary>{{ $question->content }}</summary>
-                                    <div class="card-body">
-                                        Nội dung câu hỏi
-                                        <input name="questions[]" type="text" value="{{ $question->content }}">
-                                        @foreach($question->answers as $key => $answer)
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">
-                                                <label class="form-check-label">
-                                                    <input type="text" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}" value="{{ $answer->answer_content }}">
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="card-button">
-                                        <button type="submit" class="button">Save</button>
-                                        <button type="delete" class="button">Delete</button>
-                                    </div>
-                                </details>
-                            </div>
+                            <form action="{{route('updateQuestion')}}" method="post" name="question_{{$question->id}}">
+                                @csrf
+                                <input type="hidden" name="questionId" value="{{$question->id}}">
+                                <input type="hidden" name="correct_answer" value="{{$question->correct_answer}}">
+                                <div class="card-main">
+                                        <summary>{{ $question->content }}</summary>
+                                        <div class="card-body">
+                                            Nội dung câu hỏi
+                                            <input name="content" type="text" value="{{ $question->content }}">
+                                            @foreach($question->answers as $key => $answer)
+                                                <div class="form-check">
+{{--                                                    <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">--}}
+                                                    <label class="form-check-label">
+                                                        <input type="text" name="answers[{{$answer->id}}]" value="{{ $answer->answer_content }}" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}">
+                                                        <span>{{($question->correct_answer == $answer->answer_content) ? 'Right' : ''}}</span>
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="card-button">
+                                            <button type="submit" class="button" name="type" value="update">Save</button>
+                                            <button type="submit" class="button" name="type" value="delete">Delete</button>
+                                        </div>
+
+                                </div>
+                            </form>
                         </div>
                     @endforeach
                 </div>
                 <div class="card-button">
-                    <button type="submit" class="button">Continue</button>
-                    <button type="submit" class="button">Create More</button>
+                    <button type="submit" class="button" name="type" value="continue" onclick="submitGameForm()">Continue</button>
+                    <button type="submit" class="button" name="type" value="create">Create More</button>
                 </div>
             </div>
         </form>
@@ -172,5 +176,10 @@
 {{--    END RIGHT SECTION--}}
 
 <script src="{{ asset('js/detail.js') }}"></script>
+<script>
+    function submitGameForm(){
+        document.forms['gameForm'].submit();
+    }
+</script>
 </body>
 </html>
