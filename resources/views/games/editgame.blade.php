@@ -145,6 +145,6 @@
     <!-- End Right Section -->
 
 </div>
-<script src="{{ asset('js/ingame.js') }}"></script>
+<script src="{{ asset('js/detail.js') }}"></script>
 </body>
 </html>

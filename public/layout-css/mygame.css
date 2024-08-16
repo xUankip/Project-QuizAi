@@ -177,7 +177,7 @@ aside .sidebar a:last-child{
     width: 100%;
 }
 
-aside .sidebar a.active{
+aside .sidebar qa.active{
     width: 100%;
     color: var(--color-primary);
     background-color: var(--color-light);

@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEM Results Summary</title>
-    <link rel="stylesheet" href="/css/score.css">
+    <link rel="stylesheet" href="{{asset('layout-css/score.css')}}">
 </head>
 <body>
 <main>
     <div class="result-summary">
         <div class="results grid-flow" data-spacing="large">
             <h1 class="result-title">Your Result</h1>
-            <p class="result-score"><span>76</span> of 100</p>
+            <p class="result-score"><span>{{$correctAnswers}}</span>Of {{$totalQuestions}} Questions</p>
             <div class="grid-flow">
-                <p class="result-name">Name</p>
+                <p class="result-name"></p>
             </div>
         </div>
 
@@ -30,40 +30,19 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($topUsers as $user) @endforeach
                     <tr>
                         <td>1</td>
-                        <td>John Doe</td>
-                        <td>95</td>
+                        <td>{{$user -> name}}</td>
+                        <td>{{$user -> total_score}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>89</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jim Brown</td>
-                        <td>82</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jim Brown</td>
-                        <td>82</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jim Brown</td>
-                        <td>82</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jim Brown</td>
-                        <td>82</td>
-                    </tr>
+
                     </tbody>
                 </table>
             </form>
-            <button class="button">Continue</button>
+            <form action="{{route('homeUser')}}">
+            <button href="" class="button">Continue</button>
+            </form>
         </div>
     </div>
 </main>

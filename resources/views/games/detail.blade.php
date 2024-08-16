@@ -99,8 +99,8 @@
     <!-- End of Sidebar Section -->
     {{--CONTENT--}}
     <div class="main-content">
-        <form action="{{ route('saveAll') }}" method="post">
-            @csrf
+{{--        <form action="{{ route('saveAll') }}" method="post">--}}
+{{--            @csrf--}}
             <div class="container-content">
                 <div class="card-content">
                     <div class="card-header">
@@ -140,7 +140,7 @@
                     <button type="submit" class="button">Create More</button>
                 </div>
             </div>
-        </form>
+{{--        </form>--}}
     </div>
     {{--END CONTENT--}}
 

@@ -34,6 +34,6 @@
         </div>
     </div>
 </form>
-<script></script>
+<script src="{{ asset('js/ingame.js') }}"></script>
 </body>
 </html>
