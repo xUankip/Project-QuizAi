@@ -126,6 +126,7 @@ aside .toggle{
 aside .toggle .logo{
     display: flex;
     gap: 0.5rem;
+    margin-left: 50px;
 }
 
 aside .toggle .logo img{
@@ -176,7 +177,7 @@ aside .sidebar a:last-child{
     width: 100%;
 }
 
-aside .sidebar a.active{
+aside .sidebar qa.active{
     width: 100%;
     color: var(--color-primary);
     background-color: var(--color-light);

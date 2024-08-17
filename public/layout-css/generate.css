@@ -126,6 +126,7 @@ aside .toggle{
 aside .toggle .logo{
     display: flex;
     gap: 0.5rem;
+    margin-left: 50px;
 }
 
 aside .toggle .logo img{

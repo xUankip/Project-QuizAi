@@ -18,10 +18,10 @@ class TopicController extends Controller
     }
     public function viewTopic()
     {
-        $topic = Topic::paginate(1);
+        $topic = Topic::paginate(4);
         $usersID = Session::get('user_id');
         $users = Users::findOrFail($usersID);
-        return view('users.topic-list', compact('topic', 'users'));
+        return view('games.mygame', compact('topic', 'users'));
     }
 
     // lưu id của type

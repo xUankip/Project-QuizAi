@@ -194,11 +194,26 @@ class QuizController extends Controller
                 'totalQuestions' => $totalQuestions,
             ]);
         } else {
+            $game_id = Session::get('gameID');
+            // Truy vấn đến bảng users
+            $topUsers = DB::table('user')
+                // Chọn cột của user và cột total_score trong bảng user_answers
+                ->select('user.id', 'user.name', DB::raw('SUM(user_answer.score) as total_score'))
+                ->where('user_answer.game_id',$game_id)
+
+                // Kết hợp bảng users với bảng user_answer để lấy điểm số của từng người chơi
+                ->join('user_answer', 'user.id', '=', 'user_answer.user_id')
+                // Nhóm kết quả theo các cột cụ thể
+                ->groupBy('user.id', 'user.name')
+                ->orderBy('total_score', 'desc') // Sắp xếp theo điểm từ cao đến thấp
+                ->limit(5) // Giới hạn kết quả là 3 người chơi
+                ->get();
             // Hiển thị kết quả cuối cùng
-            return view('games.result', [
+            return view('games.score', [
                 'game' => $game,
                 'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score','!=', 0)->count(),
                 'totalQuestions' => $totalQuestions,
+                'topUsers' => $topUsers,
             ]);
         }
     }

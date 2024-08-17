@@ -101,7 +101,6 @@
     <div class="main-content">
         <form action="{{route('createOrPlayGame')}}" method="post" name="gameForm">
             @csrf
-
             <div class="container-content">
                 <div class="card-content">
                     <div class="card-header">
@@ -144,7 +143,7 @@
                     <button type="submit" class="button" name="type" value="create" onclick="submitGameForm()">Create More</button>
                 </div>
             </div>
-        </form>
+{{--        </form>--}}
     </div>
     {{--END CONTENT--}}
 
