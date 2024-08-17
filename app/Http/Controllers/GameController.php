@@ -86,30 +86,58 @@ class GameController extends Controller
 
     public function updateQuestion(Request $request)
     {
-        $questionId = $request->input('questionId');
-        $question = Question::findOrFail($questionId);
-        if($question == null){
-            // @Todo create not found page.
-            return view('404');
-        }
-        $question->content = $request->input('content');
-        // validate before save
-        $updatedAnswers = $request->input('answers');
-        foreach($question->answers as $answer){
-            if(array_key_exists($answer->id, $updatedAnswers)){
-                if($answer->answer_content == $question->correct_answer){
-                    $question->correct_answer = $updatedAnswers[$answer->id];
-                }
-                $answer->answer_content = $updatedAnswers[$answer->id];
-                $answer->update(); // need update performance.
+        $type = $request->input('type');
+        if($type =="update"){
+            $questionId = $request->input('questionId');
+            $question = Question::findOrFail($questionId);
+            if($question == null){
+                // @Todo create not found page.
+                return view('404');
             }
+            $question->content = $request->input('content');
+            // validate before save
+            $updatedAnswers = $request->input('answers');
+            foreach($question->answers as $answer){
+                if(array_key_exists($answer->id, $updatedAnswers)){
+                    if($answer->answer_content == $question->correct_answer){
+                        $question->correct_answer = $updatedAnswers[$answer->id];
+                    }
+                    $answer->answer_content = $updatedAnswers[$answer->id];
+                    $answer->update(); // need update performance.
+                }
+            }
+            $question->update();
+        } else if($type =="delete"){
+            $questionId = $request->input('questionId');
+            $question = Question::findOrFail($questionId);
+            if($question == null){
+                // @Todo create not found page.
+                return view('404');
+            }
+            $question->content = $request->input('content');
+            // validate before save
+            $updatedAnswers = $request->input('answers');
+            foreach($question->answers as $answer){
+                if(array_key_exists($answer->id, $updatedAnswers)){
+                    if($answer->answer_content == $question->correct_answer){
+                        $question->correct_answer = $updatedAnswers[$answer->id];
+                    }
+                    $answer->answer_content = $updatedAnswers[$answer->id];
+                    $answer->delete(); // need update performance.
+                }
+            }
+            $question->delete();
         }
-        $question->update();
         return redirect('/quiz/' . $question->game_id);
     }
-
-    public function updateAnswer(Request $request)
+    public function createOrPlayGame(Request $request)
     {
-
+        $type = $request->input('type');
+        if ($type == "continue") {
+            $gameId = $request->input('gameId');
+            return redirect()->route('start', ['id' => $gameId]);
+        } else if ($type == "create") {
+            return redirect()->route('showForm');
+        }
     }
 }

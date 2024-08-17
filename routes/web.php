@@ -43,7 +43,7 @@ Route::post('/quiz/checkAnswer', [QuizController::class, 'checkAnswer'])->name('
 Route::get('/quiz', [QuizController::class, 'showForm'])->name('showForm');
 Route::post('/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');
 Route::get('/quiz/{id}', [QuizController::class, 'showGame'])->name('showGame');
-Route::post('/quiz/edit-or-delete', [GameController::class, 'editOrDelete'])->name('editOrDelete');
+Route::post('/quiz/createOrPlayGame', [GameController::class, 'createOrPlayGame'])->name('createOrPlayGame');
 Route::post('/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');
 
 // handle question update

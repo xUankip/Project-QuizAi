@@ -99,14 +99,15 @@
     <!-- End of Sidebar Section -->
     {{--CONTENT--}}
     <div class="main-content">
-        <form action="{{route('editOrDelete')}}" method="post" name="gameForm">
+        <form action="{{route('createOrPlayGame')}}" method="post" name="gameForm">
             @csrf
-        </form>
+
             <div class="container-content">
                 <div class="card-content">
                     <div class="card-header">
                         <h1>Edit your question:</h1>
                         <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
+                        <input type="hidden" name="gameId" value="{{$game->id}}">
                     </div>
                     @foreach($game->questions as $index => $question)
                         <div class="card">
@@ -121,7 +122,6 @@
                                             <input name="content" type="text" value="{{ $question->content }}">
                                             @foreach($question->answers as $key => $answer)
                                                 <div class="form-check">
-{{--                                                    <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">--}}
                                                     <label class="form-check-label">
                                                         <input type="text" name="answers[{{$answer->id}}]" value="{{ $answer->answer_content }}" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}">
                                                         <span>{{($question->correct_answer == $answer->answer_content) ? 'Right' : ''}}</span>
@@ -141,7 +141,7 @@
                 </div>
                 <div class="card-button">
                     <button type="submit" class="button" name="type" value="continue" onclick="submitGameForm()">Continue</button>
-                    <button type="submit" class="button" name="type" value="create">Create More</button>
+                    <button type="submit" class="button" name="type" value="create" onclick="submitGameForm()">Create More</button>
                 </div>
             </div>
         </form>
