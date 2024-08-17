@@ -8,6 +8,7 @@
     @csrf
     <button type="submit">Xem top người chơi</button>
 </form>
+
 <form action="{{route('userScore')}}" method="get">
     @csrf
     <button type="submit">Xem điểm cá nhân </button>

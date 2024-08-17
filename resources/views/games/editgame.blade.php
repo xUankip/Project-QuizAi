@@ -88,7 +88,8 @@
                     @foreach($game->questions as $index => $question)
                         <div class="card">
                             <div class="card-main">
-                                <details>
+                                <form action="">
+                                    @csrf
                                     <summary>{{ $question->content }}</summary>
                                     <div class="card-body">
                                         Nội dung câu hỏi
@@ -106,7 +107,7 @@
                                         <button type="submit" class="button">Save</button>
                                         <button type="delete" class="button">Delete</button>
                                     </div>
-                                </details>
+                                </form>
                             </div>
                         </div>
                     @endforeach

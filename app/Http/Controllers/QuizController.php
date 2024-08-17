@@ -141,8 +141,24 @@ class QuizController extends Controller
         $game = Game::findOrFail($gameId);
         $questionId = $request->input('question_id'); // Lấy ID câu hỏi từ request
         $userId = Session::get('user_id');
+
+        $existingAnswer = UserAnswer::where('user_id', $userId)
+            ->where('game_id', $gameId)
+            ->where('question_id', $questionId)
+            ->first();
+
+        if ($existingAnswer) {
+            // Người dùng đã trả lời câu hỏi này, không lưu lại nữa
+            $game = Game::findOrFail($gameId);
+            $totalQuestions = $game->questions->count();
+                return view('games.result', [
+                    'game' => $game,
+                    'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', 10)->count(),
+                    'totalQuestions' => $totalQuestions,
+                ]);
+        }
+
         $question = Question::findOrFail($questionId);
-//            $questionId = $question->id;
 
         $user_answer = new UserAnswer();
         $user_answer->user_id = $userId;
@@ -150,18 +166,18 @@ class QuizController extends Controller
         $user_answer->question_id = $questionId;
         $user_answer->selected_answer = $answer;
         $user_answer->score = 0;
-//            dd($questionId);
-//            dd($question->correct_answer);
+
         if ($answer == $question->correct_answer) {
             $user_answer->score = 10;
         }
         $user_answer->save();
 
         // Đếm số câu trả lời đúng của người dùng
-        $correctAnswersCount = UserAnswer::where('game_id', $gameId)
-            ->where('user_id', $userId)
-            ->where('score', 10)
-            ->count();
+//        $correctAnswersCount = UserAnswer::where('game_id', $gameId)
+//            ->where('user_id', $userId)
+//            ->where('score', '!=', 0)
+//            ->count();
+
         $currentQuestionIndex = Session::get('currentQuestionIndex');
         $totalQuestions = $game->questions->count();
         // Kiểm tra nếu vẫn còn câu hỏi tiếp theo
@@ -174,7 +190,7 @@ class QuizController extends Controller
             return view('games.ingame', [
                 'game' => $game,
                 'currentQuestion' => $nextQuestion,
-                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', 10)->count(),
+                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', '!=', 0)->count(),
                 'totalQuestions' => $totalQuestions,
             ]);
         } else {
@@ -195,50 +211,10 @@ class QuizController extends Controller
             // Hiển thị kết quả cuối cùng
             return view('games.score', [
                 'game' => $game,
-                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', 10)->count(),
+                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score','!=', 0)->count(),
                 'totalQuestions' => $totalQuestions,
                 'topUsers' => $topUsers,
             ]);
         }
     }
-//    public function generateQuiz(Request $request)
-//    {
-//        $request->validate([
-//            'topic' => 'required',
-//            'game'=>'required',
-//            'number' => 'required|string',
-//        ]);
-//        $topic = $request->input('topic');
-//        $game = $request->input('game');
-//        $number = $request->input('number');
-//
-//        try {
-//            $client = OpenAI::client(env('OPENAI_API_KEY'));
-//
-//            $prompt = " Tạo cho tôi một game quiz có tên là $game với chủ đề là
-//             $topic với số lượng câu hỏi là $number.
-//            Dữ liệu trả về cho tôi ở định dạng json.
-//             Mỗi câu hỏi có 4 lựa chọn đáp án và chỉ có một đáp án đúng
-//            .Danh sách câu hỏi nằm trong trường quiz,
-//             danh sách câu trả lời nằm trong trường answers của quiz,
-//              câu trả lời đúng nằm trong trường correct_answer của quiz";
-//
-//            $response = $client->chat()->create([
-//                'model' => 'gpt-3.5-turbo',
-//                'messages' => [
-//                    ['role' => 'user', 'content' => $prompt],
-//                ],
-//            ]);
-//
-//            $quizData = $response['choices'][0]['message']['content'];
-//            // save list question
-//            // save list answer;
-//            $decoded = json_decode($quizData);
-//            // redirect detail with game id.
-//            return view('questions.question-list', compact('topic','game', 'decoded'));
-//        } catch (Exception $e) {
-//            return back()->with('error', 'Có lỗi xảy ra khi tạo quiz: ' . $e->getMessage());
-//        }
-//    }
-
 }
