@@ -77,7 +77,7 @@ return new class extends Migration {
             $table->foreignId('game_id')->constrained('game')->onDelete('cascade');
             $table->foreignId('question_id')->constrained('question')->onDelete('cascade');
             $table->json('selected_answer');
-            $table->integer('score');
+            $table->decimal('score', 8, 2);
             $table->integer('time_taken');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

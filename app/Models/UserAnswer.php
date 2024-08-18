@@ -18,5 +18,6 @@ class UserAnswer extends Model
         'question_id',
         'selected_answer',
         'score',
+        'time_taken',
     ];
 }

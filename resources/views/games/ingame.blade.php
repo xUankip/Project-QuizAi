@@ -11,11 +11,14 @@
 <form action="{{ route('checkAnswer')}}" method="post">
     @csrf
     <input type="hidden" name="question_id" value="{{ $currentQuestion->id }}">
+    <input type="hidden" class="time-time_left" id="time_left" name="time_left" value="30">
+
     <div class="ingame">
         <div class="ingame-header">
             <div class="ingame-time">
                 <div class="time-text">Time left:</div>
                 <div class="time-sec" id="countdown">30</div>
+
             </div>
         </div>
         <div class="ingame-content">

@@ -5,6 +5,7 @@ function countdown() {
         document.querySelector('form').submit();
     } else {
         document.getElementById("countdown").textContent = timeLeft;
+        document.getElementById("time_left").value = timeLeft;
     }
     timeLeft -= 1;
 }

@@ -140,4 +140,14 @@ class GameController extends Controller
             return redirect()->route('showForm');
         }
     }
+
+    public function viewSearch()
+    {
+        return view('searchIdGame');
+    }
+    public function search(Request $request)
+    {
+    }
+
+
 }
