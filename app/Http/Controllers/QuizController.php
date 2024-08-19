@@ -96,7 +96,7 @@ class QuizController extends Controller
                     $answer = new Answer();
                     $answer->question_id = $question->id;
                     $answer->answer_content = $answerContent;
-                    $answer->correct_answer = $quizItem['correct_answer'];
+//                    $answer->correct_answer = $quizItem['correct_answer'];
                     $answer->created_by = $userId;
                     $answer->updated_by = $userId;
                     $answer->save();

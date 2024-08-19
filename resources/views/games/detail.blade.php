@@ -16,7 +16,7 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                <img src="{{asset('images/img3.png')}}">
+                <img src="/images/img4.png">
                 <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -31,44 +31,25 @@
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
-                <h3>Dashboard</h3>
+                <h3>Home</h3>
             </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        person_outline
-                    </span>
-                <h3>Users</h3>
-            </a>
-            <a href="#">
+            <a href="{{route('topic')}}" >
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>Games</h3>
+                <h3>My Games</h3>
+            </a>
+            <a href="{{route('showForm')}}">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                <h3>Create</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
                         search
                     </span>
                 <h3>Search</h3>
-            </a>
-            <a href="#" class="active">
-                    <span class="material-icons-sharp">
-                        insights
-                    </span>
-                <h3>Analytics</h3>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        mail_outline
-                    </span>
-                <h3>Tickets</h3>
-                <span class="message-count">27</span>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        receipt_long
-                    </span>
-                <h3>History</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
@@ -84,12 +65,6 @@
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
-                        add
-                    </span>
-                <h3>New Login</h3>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
                         logout
                     </span>
                 <h3>Logout</h3>
@@ -99,14 +74,15 @@
     <!-- End of Sidebar Section -->
     {{--CONTENT--}}
     <div class="main-content">
-        <form action="{{route('createOrPlayGame')}}" method="post" name="gameForm">
-            @csrf
             <div class="container-content">
                 <div class="card-content">
                     <div class="card-header">
-                        <h1>Edit your question:</h1>
-                        <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
-                        <input type="hidden" name="gameId" value="{{$game->id}}">
+                        <form action="{{route('createOrPlayGame')}}" method="post" name="gameForm">
+                            @csrf
+                            <h1>Edit your question:</h1>
+                            <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
+                            <input type="hidden" name="gameId" value="{{$game->id}}">
+                        </form>
                     </div>
                     @foreach($game->questions as $index => $question)
                         <div class="card">
@@ -139,8 +115,8 @@
                     @endforeach
                 </div>
                 <div class="card-button">
-                    <button type="submit" class="button" name="type" value="continue" onclick="submitGameForm()">Continue</button>
-                    <button type="submit" class="button" name="type" value="create" onclick="submitGameForm()">Create More</button>
+                    <button type="button" class="button" name="type" value="continue" onclick="submitGameForm()">Continue</button>
+                    <button type="button" class="button" name="type" value="create" onclick="submitGameForm()">Create More</button>
                 </div>
             </div>
 {{--        </form>--}}

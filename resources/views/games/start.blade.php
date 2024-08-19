@@ -37,7 +37,6 @@
                 <div id="qrcode">
                 </div>
                 <script>
-
                     var qrcode = new QRCode("qrcode","{{$link}}");
                 </script>
             </div>

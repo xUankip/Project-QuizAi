@@ -87,8 +87,11 @@ class GameController extends Controller
     public function updateQuestion(Request $request)
     {
         $type = $request->input('type');
+        $questionId = $request->input('questionId');
+
+//        dd($questionId );
         if($type =="update"){
-            $questionId = $request->input('questionId');
+//            $questionId = $request->input('questionId');
             $question = Question::findOrFail($questionId);
             if($question == null){
                 // @Todo create not found page.
@@ -99,17 +102,17 @@ class GameController extends Controller
             $updatedAnswers = $request->input('answers');
             foreach($question->answers as $answer){
                 if(array_key_exists($answer->id, $updatedAnswers)){
-                    if($answer->answer_content == $question->correct_answer){
-                        $question->correct_answer = $updatedAnswers[$answer->id];
-                    }
+//                    if($answer->answer_content == $question->correct_answer){
+//                        $question->correct_answer = $updatedAnswers[$answer->id];
+//                    }
                     $answer->answer_content = $updatedAnswers[$answer->id];
                     $answer->update(); // need update performance.
                 }
             }
             $question->update();
         } else if($type =="delete"){
-            $questionId = $request->input('questionId');
             $question = Question::findOrFail($questionId);
+//            dd($questionId);
             if($question == null){
                 // @Todo create not found page.
                 return view('404');
