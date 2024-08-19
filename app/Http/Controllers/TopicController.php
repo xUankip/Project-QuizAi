@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\Session;
 
 class TopicController extends Controller
 {
+    public function saveAll()
+    {
+        return ;
+    }
     public function viewTopic()
     {
-        $topic = Topic::paginate(1);
+        $topic = Topic::paginate(4);
         $usersID = Session::get('user_id');
         $users = Users::findOrFail($usersID);
-        return view('users.topic-list', compact('topic', 'users'));
+        return view('games.mygame', compact('topic', 'users'));
     }
 
     // lưu id của type
@@ -27,12 +31,19 @@ class TopicController extends Controller
         $typeId = $request->get('type_id');
         if ($type == "topic") {
             Session::put('topic_id', $typeId);
-        } else if ($type == "game") {
-            Session::put('game_id', $typeId);
+
+            // Tìm tất cả các trò chơi với topic_id tương ứng
+            $games = Game::where('topic_id', $typeId)->first(); // Lấy trò chơi đầu tiên hoặc null
+
+            if ($games) {
+                // Chuyển hướng tới trang bắt đầu với ID của trò chơi đầu tiên
+                return redirect()->route('start', ['id' => $games->id]);
+            } else {
+                // Không có trò chơi nào được tìm thấy, xử lý theo cách khác (chẳng hạn thông báo lỗi)
+                return redirect()->back()->with('error', 'No games found for this topic.');
+            }
         }
-//        Session::put('topic_id', $typeId);
-        // tạm thờ sẽ là trả về view game
-        return redirect()->route('game');
+//        dd($type);
     }
 
     public function viewGame()
@@ -45,4 +56,3 @@ class TopicController extends Controller
         return view('users.game', compact('games', 'users'));
     }
 }
-//What is the value of 2 + 2?

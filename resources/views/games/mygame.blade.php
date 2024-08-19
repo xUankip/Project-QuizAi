@@ -75,48 +75,28 @@
 
     {{--CONTENT--}}
     <div class="main-content">
-        <div class="parent">
-            <div class="card">
-                <div class="content-box">
-                    <h1 class="card-topic">Topic</h1>
-                    <p class="card-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, maiores? Distinctio pariatur ex recusandae reiciendis.
-                    </p>
-                    <a href="link-to-..." class="play">Play</a>
+        @foreach($topic as $topics)
+            <form action="{{route('saveId')}}" method="post">
+                @csrf
+                <div class="parent">
+                    <input value="topic" name="type" type="hidden">
+                    <input name="type_id" value="{{$topics->id}}" type="hidden">
+                    <div class="card">
+                        <div class="content-box">
+                            <h1 class="card-topic">{{$topics->description}}</h1>
+                            <p class="card-description">
+                                {{$topics->name}}
+                            </p>
+                                <button style="background-color: transparent; border : none" type="submit" class="play">Show Detail</button>
+                        </div>
+                        <div class="qr-box">
+                            <img src="{{$topics->thumbnail_url}}" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="qr-box">
-                    <img src="/images/img2.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="parent">
-            <div class="card">
-                <div class="content-box">
-                    <h1 class="card-topic">Topic</h1>
-                    <p class="card-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, maiores? Distinctio pariatur ex recusandae reiciendis.
-                    </p>
-                    <a href="link-to-..." class="play">Play</a>
-                </div>
-                <div class="qr-box">
-                    <img src="/images/img2.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="parent">
-            <div class="card">
-                <div class="content-box">
-                    <h1 class="card-topic">Topic</h1>
-                    <p class="card-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, maiores? Distinctio pariatur ex recusandae reiciendis.
-                    </p>
-                    <a href="link-to-..." class="play">Play</a>
-                </div>
-                <div class="qr-box">
-                    <img src="/images/img2.png" alt="">
-                </div>
-            </div>
-        </div>
+            </form>
+        @endforeach
+        {!!$topic->links()!!}
     </div>
     {{--END CONTENT--}}
 

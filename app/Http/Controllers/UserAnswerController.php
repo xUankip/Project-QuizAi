@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 class UserAnswerController extends Controller
 {
     //
     public function topUser()
     {
-        $game_id = 31;
+        $game_id = Session::get('gameID');
         // Truy vấn đến bảng users
         $topUsers = DB::table('user')
             // Chọn cột của user và cột total_score trong bảng user_answers
@@ -29,8 +31,8 @@ class UserAnswerController extends Controller
     public function userScore()
     {
         // lấy id
-        $id = 5;
-        $game_id = 35;
+        $id = Session::get('user_id');
+        $game_id = Session::get('gameID');
         $userScore = DB::table('user')
             // Chọn cột của user và cột total_score trong bảng user_answers
             ->select('user.id', 'user.name', DB::raw('SUM(user_answer.score) as total_score'))
