@@ -27,23 +27,23 @@
         </div>
 
         <div class="sidebar">
-            <a href="#">
+            <a href="{{route('homeUser')}}">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                 <h3>Home</h3>
             </a>
-            <a href="#" class="active">
-                    <span class="material-icons-sharp">
-                        person_outline
-                    </span>
-                <h3>Users</h3>
-            </a>
-            <a href="#">
+            <a href="{{route('topic')}}" >
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>Games</h3>
+                <h3>My Games</h3>
+            </a>
+            <a href="{{route('showForm')}}">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                <h3>Create</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
@@ -51,7 +51,6 @@
                     </span>
                 <h3>Search</h3>
             </a>
-
             <a href="#">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
@@ -63,12 +62,6 @@
                         settings
                     </span>
                 <h3>Settings</h3>
-            </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        add
-                    </span>
-                <h3>New Login</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">

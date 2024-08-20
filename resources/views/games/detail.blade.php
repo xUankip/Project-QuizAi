@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="#">
+            <a href="{{route('homeUser')}}">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -81,6 +81,7 @@
                             @csrf
                             <h1>Edit your question:</h1>
                             <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
+                            <input type="hidden" name="type" id="formType" value="">
                             <input type="hidden" name="gameId" value="{{$game->id}}">
                         </form>
                     </div>
@@ -115,8 +116,8 @@
                     @endforeach
                 </div>
                 <div class="card-button">
-                    <button type="button" class="button" name="type" value="continue" onclick="submitGameForm()">Continue</button>
-                    <button type="button" class="button" name="type" value="create" onclick="submitGameForm()">Create More</button>
+                    <button type="button" class="button"  onclick="submitGameForm('continue')">Continue</button>
+                    <button type="button" class="button" onclick="submitGameForm('create')">Create More</button>
                 </div>
             </div>
 {{--        </form>--}}
@@ -135,7 +136,7 @@
             </button>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Tuan Anh</b></p>
+                    <p>Hey, <b>{{old('name', $users->name ?? 'Guest')}}</b></p>
                     <small class="text-muted">Admin</small>
                 </div>
                 <div class="profile-photo">
@@ -152,7 +153,8 @@
 
 <script src="{{ asset('js/detail.js') }}"></script>
 <script>
-    function submitGameForm(){
+    function submitGameForm(type){
+        document.getElementById('formType').value = type;
         document.forms['gameForm'].submit();
     }
 </script>

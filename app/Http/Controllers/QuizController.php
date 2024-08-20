@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\Question;
 use App\Models\Topic;
 use App\Models\UserAnswer;
+use App\Models\Users;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\DB;
 use SomeNamespace\Exceptions\ConnectionException;
@@ -18,7 +19,9 @@ class QuizController extends Controller
 {
     public function showForm()
     {
-        return view('games.generate');
+        $usersID = Session::get('user_id');
+        $users = Users::findOrFail($usersID);
+        return view('games.generate',compact('users'));
     }
 
     public function generateQuiz(Request $request)
@@ -32,7 +35,7 @@ class QuizController extends Controller
 
         $topicName = $request->input('topic');
         $gameName = $request->input('game');
-        $number = $request->input('number');
+        $number = $request->input('nfumber');
 
         try {
             $client = OpenAI::client(env('OPENAI_API_KEY'));
@@ -113,8 +116,10 @@ class QuizController extends Controller
     {
         // get game by id.
         $game = Game::findOrFail($id);
+        $usersID = Session::get('user_id');
+        $users = Users::findOrFail($usersID);
         if (!$game) return;
-        return view('games.detail', compact('game'));
+        return view('games.detail', compact('game','users'));
     }
 
     public function viewPlayUsers()
