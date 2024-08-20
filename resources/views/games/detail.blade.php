@@ -16,7 +16,6 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                <img src="{{asset('images/img3.png')}}">
                 <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -143,7 +142,7 @@
                     <button type="submit" class="button" name="type" value="create" onclick="submitGameForm()">Create More</button>
                 </div>
             </div>
-{{--        </form>--}}
+        </form>
     </div>
     {{--END CONTENT--}}
 
@@ -159,8 +158,7 @@
             </button>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Tuan Anh</b></p>
-                    <small class="text-muted">Admin</small>
+                    <p>Hey, <b>{{old('name',$user->name)}}</b></p>
                 </div>
                 <div class="profile-photo">
                     <img src="/images/img6.png">

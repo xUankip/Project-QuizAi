@@ -16,7 +16,6 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                <img src="{{asset('images/img3.png')}}">
                 <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -123,8 +122,7 @@
 
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Tuan Anh</b></p>
-                    <small class="text-muted">User</small>
+{{--                    <p>Hey, <b>{{old('name',$users->name)}}</b></p>--}}
                 </div>
                 <div class="profile-photo">
                     <img src="/images/img6.png">

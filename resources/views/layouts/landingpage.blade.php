@@ -18,14 +18,15 @@
             <li><a href="#">About</a></li>
         </ul>
         <ul class="nav__links nav__right">
-            <li><a href="#">Login/Register</a></li>
+            <li><a href="{{route('login')}}">Login</a></li>
+            <li><a href="{{route('register')}}">Register</a></li>
         </ul>
     </nav>
     <span class="letter-s">S</span>
     <img src="/images/img7.png" alt="header" />
     <h4 class="text__left">QUE</h4>
     <h4 class="text__right">TION</h4>
-    <button class="btn explore">EXPLORE MORE</button>
+    <button onclick="window.location.href='{{ route('showForm') }}'" class="btn explore">EXPLORE MORE</button>
     <button class="btn print">CREATE</button>
     <button class="btn catalog">GAMES</button>
     <h5 class="feature-1">Simplify</h5>
