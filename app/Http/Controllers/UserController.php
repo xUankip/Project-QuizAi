@@ -71,7 +71,7 @@ class UserController extends Controller
     // index
     public function viewIndex()
     {
-        return view('users.welcome');
+        return view('layouts.landingpage');
     }
 
     // home user
@@ -79,7 +79,10 @@ class UserController extends Controller
     {
         $usersID = Session::get('user_id');
         $users = Users::findOrFail($usersID);
+//        return view('users.welcomeHomeUser', $users->name);
+//        dd($users->name);
         return view('users.welcomeHomeUser', compact('users'));
+
     }
 
     // chỉnh sửa thông tin cá nhân

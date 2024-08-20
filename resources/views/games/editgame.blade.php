@@ -27,19 +27,19 @@
         </div>
 
         <div class="sidebar">
-            <a href="#">
+            <a href="{{route('homeUser')}}">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                 <h3>Home</h3>
             </a>
-            <a href="#">
+            <a href="{{route('topic')}}" >
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
                 <h3>My Games</h3>
             </a>
-            <a href="#" class="active">
+            <a href="{{route('showForm')}}">
                     <span class="material-icons-sharp">
                         add
                     </span>
@@ -132,7 +132,7 @@
 
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Tuan Anh</b></p>
+                    <p>Hey, <b>{{old('name',$users->name)}}</b></p>
                     <small class="text-muted">User</small>
                 </div>
                 <div class="profile-photo">
@@ -144,7 +144,6 @@
         <!-- End of Nav -->
     </div>
     <!-- End Right Section -->
-
 </div>
 <script src="{{ asset('js/detail.js') }}"></script>
 </body>

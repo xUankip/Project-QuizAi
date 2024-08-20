@@ -136,6 +136,7 @@ class GameController extends Controller
     public function createOrPlayGame(Request $request)
     {
         $type = $request->input('type');
+//        dd($type);
         if ($type == "continue") {
             $gameId = $request->input('gameId');
             return redirect()->route('start', ['id' => $gameId]);
@@ -148,9 +149,12 @@ class GameController extends Controller
     {
         return view('searchIdGame');
     }
-    public function search(Request $request)
+
+    public function showAnswer()
     {
+
     }
+
 
 
 }

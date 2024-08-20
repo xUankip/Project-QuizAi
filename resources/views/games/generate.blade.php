@@ -1,3 +1,5 @@
+{{--@extends('layouts.index-user')--}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +29,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="#">
+            <a href="{{route('homeUser')}}">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -74,6 +76,7 @@
     <!-- End of Sidebar Section -->
 
     {{--CONTENT--}}
+{{--@section('content')--}}
     <div class="main-content">
         <div class="card-header">
             <h3 class="card-title">CREATE QUIZ</h3>
@@ -90,10 +93,6 @@
                     <label for="exampleInputPassword1">Topic Title</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Topic Title" name="topic">
                 </div>
-{{--                <div class="form-group">--}}
-{{--                    <label for="exampleInputEmail1">Number of Question</label>--}}
-{{--                    <input type="number" class="form-control" placeholder="Min 5 Max 20" min="5" step="5" max="20" oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="number">--}}
-{{--                </div>--}}
                 <div class="form-group">
                     <label> Number of Questions</label>
                     <select class="form-control" name="number">
@@ -104,15 +103,17 @@
                     </select>
                 </div>
             </div>
-
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Generate</button>
             </div>
         </form>
     </div>
-    {{--END CONTENT--}}
+{{--@endsection--}}
 
-    <!-- Right Section -->
+{{--END CONTENT--}}
+
+
+<!-- Right Section -->
     <div class="right-section">
         <div class="nav">
             <button id="menu-btn">
@@ -123,7 +124,9 @@
 
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>Tuan Anh</b></p>
+{{--                    <p>Hey, <b>Tuan Anh</b></p>--}}
+                    <p>Hey, <b>{{old('name',$users->name)}}</b></p>
+
                     <small class="text-muted">User</small>
                 </div>
                 <div class="profile-photo">
@@ -136,14 +139,14 @@
     </div>
     <!-- End Right Section -->
 
-    {{--    LOADING--}}
+        LOADING
     <div class="loading">
         <div class="circle" style="--a:#00e371"></div>
         <div class="circle" style="--a:#ff2756"></div>
         <div class="circle" style="--a:#f7ff09"></div>
         <span class="loading-text">Loading</span>
     </div>
-    {{--    END LOADING--}}
+        END LOADING
 </div>
 <script src="{{ asset('js/generate.js') }}"></script>
 </body>
