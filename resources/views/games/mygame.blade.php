@@ -1,17 +1,4 @@
 @extends('layouts.index-user')
-
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-
-{{--<head>--}}
-{{--    <meta charset="UTF-8">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-{{--    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">--}}
-{{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">--}}
-{{--    <link rel="stylesheet" href="{{ asset('layout-css/mygame.css') }}">--}}
-{{--    <title>Demo Admin Page-QuizAI</title>--}}
-{{--</head>--}}
-
 {{--<body>--}}
 {{--<div class="container">--}}
 {{--    <!-- Sidebar Section -->--}}
@@ -113,15 +100,15 @@
 {{--                    </span>--}}
 {{--            </button>--}}
 
-{{--            <div class="profile">--}}
-{{--                <div class="info">--}}
-{{--                    <p>Hey, <b>Tuan Anh</b></p>--}}
-{{--                    <small class="text-muted">User</small>--}}
-{{--                </div>--}}
-{{--                <div class="profile-photo">--}}
-{{--                    <img src="/images/img6.png">--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="profile">
+                <div class="info">
+                    <p>Hey, <b>Tuan Anh</b></p>
+                </div>
+                <div class="profile-photo">
+                    <img src="/images/img6.png">
+                </div>
+            </div>
+
 
 {{--        </div>--}}
 {{--        <!-- End of Nav -->--}}

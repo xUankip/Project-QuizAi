@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('layout-css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('layout-css/gamesadmin.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +16,7 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                 <h2>Quiz<span class="danger">AI</span></h2>
+                <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
                     <span class="material-icons-sharp">
@@ -26,23 +26,23 @@
         </div>
 
         <div class="sidebar">
-            <a href="{{route('homeUser')}}">
+            <a href="#">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                 <h3>Home</h3>
             </a>
-            <a href="{{route('topic')}}" >
+            <a href="#">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                <h3>Users</h3>
+            </a>
+            <a href="#" class="active">
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>My Games</h3>
-            </a>
-            <a href="{{route('showForm')}}">
-                    <span class="material-icons-sharp">
-                        add
-                    </span>
-                <h3>Create</h3>
+                <h3>Games</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
@@ -50,6 +50,7 @@
                     </span>
                 <h3>Search</h3>
             </a>
+
             <a href="#">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
@@ -61,6 +62,12 @@
                         settings
                     </span>
                 <h3>Settings</h3>
+            </a>
+            <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                <h3>New Login</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
@@ -76,7 +83,7 @@
     {{--CONTENT--}}
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>All Users</h1>
+            <h1>All Games</h1>
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
                 <img src="/images/img9.png" alt="">
@@ -98,10 +105,10 @@
                 <thead>
                 <tr>
                     <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> User Name <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Gmail <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Phone <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Game Name <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Topic <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Create at <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Create by <span class="icon-arrow">&UpArrow;</span></th>
                     <th> Action <span class="icon-arrow"></span></th>
                 </tr>
                 </thead>
