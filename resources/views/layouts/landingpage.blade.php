@@ -22,13 +22,13 @@
             <li><a href="{{route('register')}}">Register</a></li>
         </ul>
     </nav>
-    <span class="letter-s">S</span>
+    <span class="letter-s">AI</span>
     <img src="/images/img7.png" alt="header" />
-    <h4 class="text__left">QUE</h4>
-    <h4 class="text__right">TION</h4>
-    <a href="{{route('topic')}}"><button class="btn explore" >EXPLORE MORE</button></a>
-    <button class="btn print">CREATE</button>
-    <button class="btn catalog">GAMES</button>
+    <h4 class="text__left">QU</h4>
+    <h4 class="text__right">IZ</h4>
+    <a href="{{route('topic')}}"><button class="btn explore" >START EXPLORE</button></a>
+{{--    <button class="btn print">CREATE</button>--}}
+{{--    <button class="btn catalog">GAMES</button>--}}
     <h5 class="feature-1">Simplify</h5>
     <h5 class="feature-2">Innovate</h5>
     <h5 class="feature-3">Intelligence</h5>

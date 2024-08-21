@@ -63,7 +63,7 @@
                     </span>
                 <h3>Settings</h3>
             </a>
-            <a href="#">
+            <a href="{{route('home')}}">
                     <span class="material-icons-sharp">
                         logout
                     </span>

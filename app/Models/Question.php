@@ -12,7 +12,6 @@ class Question extends Model
     protected $fillable = [
         'game_id',
         'content',
-//        'topic_id',
         'correct_answer',
         'score',
         'created_by',
