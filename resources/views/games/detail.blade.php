@@ -16,7 +16,6 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                <img src="/images/img4.png">
                 <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -120,7 +119,7 @@
                     <button type="button" class="button" onclick="submitGameForm('create')">Create More</button>
                 </div>
             </div>
-{{--        </form>--}}
+        </form>
     </div>
     {{--END CONTENT--}}
 

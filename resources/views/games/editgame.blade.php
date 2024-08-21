@@ -16,7 +16,6 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                <img src="{{asset('images/img3.png')}}">
                 <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">

@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('layout-css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('layout-css/gamesadmin.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +16,7 @@
     <aside>
         <div class="toggle">
             <div class="logo">
-                 <h2>Quiz<span class="danger">AI</span></h2>
+                <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
                     <span class="material-icons-sharp">
@@ -26,23 +26,23 @@
         </div>
 
         <div class="sidebar">
-            <a href="{{route('homeUser')}}">
+            <a href="#">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                 <h3>Home</h3>
             </a>
-            <a href="{{route('topic')}}" >
+            <a href="#">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                <h3>Users</h3>
+            </a>
+            <a href="#" class="active">
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>My Games</h3>
-            </a>
-            <a href="{{route('showForm')}}">
-                    <span class="material-icons-sharp">
-                        add
-                    </span>
-                <h3>Create</h3>
+                <h3>Games</h3>
             </a>
             <a href="#">
                     <span class="material-icons-sharp">
@@ -50,6 +50,7 @@
                     </span>
                 <h3>Search</h3>
             </a>
+
             <a href="#">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
@@ -62,7 +63,13 @@
                     </span>
                 <h3>Settings</h3>
             </a>
-            <a href="{{route('home')}}">
+            <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                <h3>New Login</h3>
+            </a>
+            <a href="#">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -76,10 +83,7 @@
     {{--CONTENT--}}
     <main class="table" id="customers_table">
         <section class="table__header">
-            <div class="table__title">
-                <h1>All Users</h1>
-                <button type="button">Add</button>
-            </div>
+            <h1>All Games</h1>
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
                 <img src="/images/img9.png" alt="">
@@ -101,18 +105,18 @@
                 <thead>
                 <tr>
                     <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> User Name <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Gmail <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Phone <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Game Name <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Topic <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Create at <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Create by <span class="icon-arrow">&UpArrow;</span></th>
                     <th> Action <span class="icon-arrow"></span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td> 1 </td>
-                    <td> Zinzu Chan Lee</td>
-                    <td> Seoul@gmail.com </td>
+                    <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Zinzu Chan Lee</td>
+                    <td> Seoul </td>
                     <td> 17 Dec, 2022 </td>
                     <td>
                         <p class="status delivered">Delivered</p>
@@ -124,7 +128,7 @@
                 </tr>
                 <tr>
                     <td> 2 </td>
-                    <td> Jeet Saru </td>
+                    <td><img src="images/Jeet Saru.png" alt=""> Jeet Saru </td>
                     <td> Kathmandu </td>
                     <td> 27 Aug, 2023 </td>
                     <td>
@@ -137,7 +141,7 @@
                 </tr>
                 <tr>
                     <td> 3</td>
-                    <td> Sonal Gharti </td>
+                    <td><img src="images/Sonal Gharti.jpg" alt=""> Sonal Gharti </td>
                     <td> Tokyo </td>
                     <td> 14 Mar, 2023 </td>
                     <td>
@@ -150,7 +154,7 @@
                 </tr>
                 <tr>
                     <td> 4</td>
-                    <td> Alson GC </td>
+                    <td><img src="images/Alson GC.jpg" alt=""> Alson GC </td>
                     <td> New Delhi </td>
                     <td> 25 May, 2023 </td>
                     <td>
@@ -163,7 +167,7 @@
                 </tr>
                 <tr>
                     <td> 5</td>
-                    <td> Sarita Limbu </td>
+                    <td><img src="images/Sarita Limbu.jpg" alt=""> Sarita Limbu </td>
                     <td> Paris </td>
                     <td> 23 Apr, 2023 </td>
                     <td>
@@ -176,7 +180,7 @@
                 </tr>
                 <tr>
                     <td> 6</td>
-                    <td> Alex Gonley </td>
+                    <td><img src="images/Alex Gonley.jpg" alt=""> Alex Gonley </td>
                     <td> London </td>
                     <td> 23 Apr, 2023 </td>
                     <td>
@@ -189,7 +193,7 @@
                 </tr>
                 <tr>
                     <td> 7</td>
-                    <td> Jeet Saru </td>
+                    <td><img src="images/Alson GC.jpg" alt=""> Jeet Saru </td>
                     <td> New York </td>
                     <td> 20 May, 2023 </td>
                     <td>
@@ -202,7 +206,7 @@
                 </tr>
                 <tr>
                     <td> 8</td>
-                    <td> Aayat Ali Khan </td>
+                    <td><img src="images/Sarita Limbu.jpg" alt=""> Aayat Ali Khan </td>
                     <td> Islamabad </td>
                     <td> 30 Feb, 2023 </td>
                     <td>
@@ -215,7 +219,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td> Alson GC </td>
+                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -228,7 +232,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td> Alson GC </td>
+                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -241,7 +245,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td> Alson GC </td>
+                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -254,7 +258,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td> Alson GC </td>
+                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -267,7 +271,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td> Alson GC </td>
+                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -278,35 +282,8 @@
                         <button type="delete">Delete</button>
                     </td>
                 </tr>
-
                 </tbody>
             </table>
-        </section>
-        <section class="table__footer" >
-            <div class="pagination">
-                <div>
-                    <span class="material-icons-sharp">
-                        keyboard_double_arrow_left
-                    </span>
-                </div>
-                <div>
-                    <span class="material-icons-sharp">
-                        chevron_left
-                    </span>
-                </div>
-                <div>1</div>
-                <div>2</div>
-                <div>
-                    <span class="material-icons-sharp">
-                        chevron_right
-                    </span>
-                </div>
-                <div>
-                    <span class="material-icons-sharp">
-                        keyboard_double_arrow_right
-                    </span>
-                </div>
-            </div>
         </section>
     </main>
     {{--END CONTENT--}}

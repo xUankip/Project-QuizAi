@@ -32,7 +32,7 @@
                 <form action="{{route('login.post')}}" method="post">
                     @csrf
                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                        <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                        <p class="lead fw-normal mb-0 me-3">Sign Up</p>
                         <button type="button" data-mdb-button-init data-mdb-ripple-init
                                 class="btn btn-primary btn-floating mx-1">
                             <i class="fab fa-facebook-f"></i>
@@ -82,6 +82,9 @@
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login
+                        </button>
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Home
                         </button>
                         <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{route('register')}}"
                                                                                           class="link-danger">Register</a>
