@@ -119,7 +119,7 @@
                 <tr>
                     <td> 1 </td>
                     <td> Zinzu Chan Lee</td>
-                    <td> Seoul </td>
+                    <td> Seoul@gmail.com </td>
                     <td> 17 Dec, 2022 </td>
                     <td>
                         <p class="status delivered">Delivered</p>

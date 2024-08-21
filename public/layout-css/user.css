@@ -248,6 +248,9 @@ main.table {
     display: flex;
     flex-direction: column;
     margin: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .table__title button{
@@ -309,6 +312,19 @@ main.table {
     overflow: overlay;
 }
 
+.table__body button{
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #0c84ff;
+    border-radius: 5px;
+}
 
 .table__body::-webkit-scrollbar{
     width: 0.5rem;
