@@ -76,7 +76,10 @@
     {{--CONTENT--}}
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>All Users</h1>
+            <div class="table__title">
+                <h1>All Users</h1>
+                <button type="button">Add</button>
+            </div>
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
                 <img src="/images/img9.png" alt="">
@@ -108,7 +111,7 @@
                 <tbody>
                 <tr>
                     <td> 1 </td>
-                    <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Zinzu Chan Lee</td>
+                    <td> Zinzu Chan Lee</td>
                     <td> Seoul </td>
                     <td> 17 Dec, 2022 </td>
                     <td>
@@ -121,7 +124,7 @@
                 </tr>
                 <tr>
                     <td> 2 </td>
-                    <td><img src="images/Jeet Saru.png" alt=""> Jeet Saru </td>
+                    <td> Jeet Saru </td>
                     <td> Kathmandu </td>
                     <td> 27 Aug, 2023 </td>
                     <td>
@@ -134,7 +137,7 @@
                 </tr>
                 <tr>
                     <td> 3</td>
-                    <td><img src="images/Sonal Gharti.jpg" alt=""> Sonal Gharti </td>
+                    <td> Sonal Gharti </td>
                     <td> Tokyo </td>
                     <td> 14 Mar, 2023 </td>
                     <td>
@@ -147,7 +150,7 @@
                 </tr>
                 <tr>
                     <td> 4</td>
-                    <td><img src="images/Alson GC.jpg" alt=""> Alson GC </td>
+                    <td> Alson GC </td>
                     <td> New Delhi </td>
                     <td> 25 May, 2023 </td>
                     <td>
@@ -160,7 +163,7 @@
                 </tr>
                 <tr>
                     <td> 5</td>
-                    <td><img src="images/Sarita Limbu.jpg" alt=""> Sarita Limbu </td>
+                    <td> Sarita Limbu </td>
                     <td> Paris </td>
                     <td> 23 Apr, 2023 </td>
                     <td>
@@ -173,7 +176,7 @@
                 </tr>
                 <tr>
                     <td> 6</td>
-                    <td><img src="images/Alex Gonley.jpg" alt=""> Alex Gonley </td>
+                    <td> Alex Gonley </td>
                     <td> London </td>
                     <td> 23 Apr, 2023 </td>
                     <td>
@@ -186,7 +189,7 @@
                 </tr>
                 <tr>
                     <td> 7</td>
-                    <td><img src="images/Alson GC.jpg" alt=""> Jeet Saru </td>
+                    <td> Jeet Saru </td>
                     <td> New York </td>
                     <td> 20 May, 2023 </td>
                     <td>
@@ -199,7 +202,7 @@
                 </tr>
                 <tr>
                     <td> 8</td>
-                    <td><img src="images/Sarita Limbu.jpg" alt=""> Aayat Ali Khan </td>
+                    <td> Aayat Ali Khan </td>
                     <td> Islamabad </td>
                     <td> 30 Feb, 2023 </td>
                     <td>
@@ -212,7 +215,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
+                    <td> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -225,7 +228,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
+                    <td> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -238,7 +241,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
+                    <td> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -251,7 +254,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
+                    <td> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -264,7 +267,7 @@
                 </tr>
                 <tr>
                     <td> 9</td>
-                    <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
+                    <td> Alson GC </td>
                     <td> Dhaka </td>
                     <td> 22 Dec, 2023 </td>
                     <td>
@@ -275,8 +278,35 @@
                         <button type="delete">Delete</button>
                     </td>
                 </tr>
+
                 </tbody>
             </table>
+        </section>
+        <section class="table__footer" >
+            <div class="pagination">
+                <div>
+                    <span class="material-icons-sharp">
+                        keyboard_double_arrow_left
+                    </span>
+                </div>
+                <div>
+                    <span class="material-icons-sharp">
+                        chevron_left
+                    </span>
+                </div>
+                <div>1</div>
+                <div>2</div>
+                <div>
+                    <span class="material-icons-sharp">
+                        chevron_right
+                    </span>
+                </div>
+                <div>
+                    <span class="material-icons-sharp">
+                        keyboard_double_arrow_right
+                    </span>
+                </div>
+            </div>
         </section>
     </main>
     {{--END CONTENT--}}
