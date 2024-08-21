@@ -26,7 +26,7 @@
     <img src="/images/img7.png" alt="header" />
     <h4 class="text__left">QUE</h4>
     <h4 class="text__right">TION</h4>
-    <button onclick="window.location.href='{{ route('showForm') }}'" class="btn explore">EXPLORE MORE</button>
+    <a href="{{route('topic')}}"><button class="btn explore" >EXPLORE MORE</button></a>
     <button class="btn print">CREATE</button>
     <button class="btn catalog">GAMES</button>
     <h5 class="feature-1">Simplify</h5>

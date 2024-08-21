@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('layout-css/editgame.css') }}">
+    <link rel="stylesheet" href="{{ asset('layout-css/mygame.css') }}">
     <title>Demo Admin Page-QuizAI</title>
 </head>
 
@@ -16,6 +16,7 @@
     <aside>
         <div class="toggle">
             <div class="logo">
+                <img src="/images/img4.png">
                 <h2>Quiz<span class="danger">AI</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -26,7 +27,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="{{route('homeUser')}}">
+            <a href="#">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -74,49 +75,12 @@
 
     {{--CONTENT--}}
     <div class="main-content">
-        <form action="{{ route('saveAll') }}" method="post">
-            @csrf
-            <div class="container-content">
-                <div class="card-content">
-                    <div class="card-header">
-                        <h1>Edit your question:</h1>
-                        <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
-                        {{--            <input name="topic" value="{{ $game->topic->name }}">--}}
-                        <input name="game" value="{{ $game }}" type="hidden">
-                    </div>
-                    @foreach($game->questions as $index => $question)
-                        <div class="card">
-                            <div class="card-main">
-                                <form action="">
-                                    @csrf
-                                    <summary>{{ $question->content }}</summary>
-                                    <div class="card-body">
-                                        Nội dung câu hỏi
-                                        <input name="questions[]" type="text" value="{{ $question->content }}">
-                                        @foreach($question->answers as $key => $answer)
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="answers[{{ $index }}]" value="{{ $key }}">
-                                                <label class="form-check-label">
-                                                    <input type="text" style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}" value="{{ $answer->answer_content }}">
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="card-button">
-                                        <button type="submit" class="button">Save</button>
-                                        <button type="delete" class="button">Delete</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="card-button">
-                    <button type="submit" class="button">Continue</button>
-                    <button type="submit" class="button">Create More</button>
-                </div>
-            </div>
-        </form>
+            <form action="{{route('search')}}" method="post">
+                @csrf
+                <label>Search</label>
+                <input name="gameId" type="text">
+                <button type="submit">Search </button>
+            </form>
     </div>
     {{--END CONTENT--}}
 
@@ -131,7 +95,7 @@
 
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>{{old('name',$users->name)}}</b></p>
+                    <p>Hey, <b>Tuan Anh</b></p>
                     <small class="text-muted">User</small>
                 </div>
                 <div class="profile-photo">

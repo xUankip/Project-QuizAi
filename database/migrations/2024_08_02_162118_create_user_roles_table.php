@@ -64,7 +64,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('question_id')->constrained('question')->onDelete('cascade');
             $table->json('answer_content');
-            $table->json('correct_answer');
+//            $table->json('correct_answer');
             $table->foreignId('created_by')->nullable()->constrained('user')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('user')->onDelete('set null');
             $table->foreignId('deleted_by')->nullable()->constrained('user')->onDelete('set null');
@@ -77,7 +77,7 @@ return new class extends Migration {
             $table->foreignId('game_id')->constrained('game')->onDelete('cascade');
             $table->foreignId('question_id')->constrained('question')->onDelete('cascade');
             $table->json('selected_answer');
-            $table->integer('score');
+            $table->decimal('score', 8, 2);
             $table->integer('time_taken');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

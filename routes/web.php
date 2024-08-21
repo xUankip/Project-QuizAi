@@ -57,3 +57,6 @@ Route::get('/termsOfService',[UserController::class,'viewTermsOfService'])->name
 
 Route::get('/topUsers',[UserAnswerController::class,'topUser'])->name('topUsers');
 Route::get('/userScore',[UserAnswerController::class,'userScore'])->name('userScore');
+
+Route::get('/search',[GameController::class,'viewSearch'])->name('viewSearch');
+Route::post('/search',[GameController::class,'search'])->name('search');

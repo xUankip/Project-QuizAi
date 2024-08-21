@@ -30,12 +30,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($topUsers as $user) @endforeach
-                    <tr>
-                        <td>1</td>
-                        <td>{{$user -> name}}</td>
-                        <td>{{$user -> total_score}}</td>
-                    </tr>
+                    @foreach($topUsers as $user)
+                        <tr>
+                            <td>1</td>
+                            <td>{{$user -> name}}</td>
+                            <td>{{$user -> total_score}}</td>
+                        </tr>
+                    @endforeach
 
                     </tbody>
                 </table>
