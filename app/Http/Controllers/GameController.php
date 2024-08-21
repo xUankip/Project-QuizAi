@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\Question;
 use App\Models\Topic;
 use App\Models\UserAnswer;
+use App\Models\Users;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -41,120 +42,137 @@ class GameController extends Controller
         if ($userHasPlayed) {
             return redirect()->back()->with('error', 'You have already played this game');
         }
-        return redirect()->route('viewPlayUsers');
+        return redirect()->route('viewGame');
     }
-    public function editOrDelete(Request $request)
+
+    public function viewGame()
     {
-        $type = $request->input('type');
-        if($type =="update"){
-            $question = new Question();
-            $question->id = $request->input('question_id');
-            $question = Question::findOrFail($question->id);
-            $question->content = $request->input('questions');
-            $question->correct_answer = $request->input('correct_answer');
-            $question->update();
-            $answerId = $request->input('answer_id');
-            $answerContents = $request->input('answer_content');
-            foreach ($answerId as $index => $answerId) {
-                $answer = Answer::findOrFail($answerId);
-                $answer->answer_content = $answerContents[$index];
-                $answer->update();
-            }
-            return redirect()->back();
-        }
-        else if($type =="delete"){
-            $question = Question::findOrFail($request->input('question_id'));
-            $question->delete();
-
-            $answerId = $request->input('answer_id');
-            foreach ($answerId as $answerId) {
-                $answer = Answer::findOrFail($answerId);
-                if($answer && $answer->question_id == $question->id){
-                    $answer->delete();
-                }
-            }
-            return redirect()->back();
-        }
-        else if($type =="continue"){
-            $gameId = $request->input('game_id');
-            return redirect()->route('start',['id' => $gameId]);
-        }
-        else if($type =="create"){
-            return redirect()->route('showForm');
-        }
+        $usersID = Session::get('user_id');
+        $users = Users::findOrFail($usersID);
+        $topicID = Session::get('topic_id');
+        $games = Game::findOrFail($topicID);
+        return view('users.game', compact('games', 'users'));
     }
-
-    public function updateQuestion(Request $request)
+    public function viewPlayUsers()
     {
-        $type = $request->input('type');
-        $questionId = $request->input('questionId');
+        $id = Session::get('gameID');
+//        dd($id);
+        $game = Game::findOrFail($id);
+        Session::put('currentQuestionIndex', 0);
+        return view('games.ingame', [
+            'game' => $game,
+            'currentQuestion' => $game->questions()->first()
+        ]);
+    }
+    public function checkAnswer(Request $request)
+    {
+        $gameId = Session::get('gameID');
+        $answer = $request->input('answer_content');
+        $game = Game::findOrFail($gameId);
+        $questionId = $request->input('question_id'); // Lấy ID câu hỏi từ request
+        $userId = Session::get('user_id');
+        $totalQuestions = $game->questions->count();
 
-//        dd($questionId );
-        if($type =="update"){
-//            $questionId = $request->input('questionId');
-            $question = Question::findOrFail($questionId);
-            if($question == null){
-                // @Todo create not found page.
-                return view('404');
-            }
-            $question->content = $request->input('content');
-            // validate before save
-            $updatedAnswers = $request->input('answers');
-            foreach($question->answers as $answer){
-                if(array_key_exists($answer->id, $updatedAnswers)){
-//                    if($answer->answer_content == $question->correct_answer){
-//                        $question->correct_answer = $updatedAnswers[$answer->id];
-//                    }
-                    $answer->answer_content = $updatedAnswers[$answer->id];
-                    $answer->update(); // need update performance.
-                }
-            }
-            $question->update();
-        } else if($type =="delete"){
-            $question = Question::findOrFail($questionId);
-//            dd($questionId);
-            if($question == null){
-                // @Todo create not found page.
-                return view('404');
-            }
-            $question->content = $request->input('content');
-            // validate before save
-            $updatedAnswers = $request->input('answers');
-            foreach($question->answers as $answer){
-                if(array_key_exists($answer->id, $updatedAnswers)){
-                    if($answer->answer_content == $question->correct_answer){
-                        $question->correct_answer = $updatedAnswers[$answer->id];
-                    }
-                    $answer->answer_content = $updatedAnswers[$answer->id];
-                    $answer->delete(); // need update performance.
-                }
-            }
-            $question->delete();
+        $existingAnswer = UserAnswer::where('user_id', $userId)
+            ->where('game_id', $gameId)
+            ->where('question_id', $questionId)
+            ->first();
+
+        if ($existingAnswer) {
+            // Người dùng đã trả lời câu hỏi này, không lưu lại nữa
+            $game = Game::findOrFail($gameId);
+//            $totalQuestions = $game->questions->count();
+            $game_id = Session::get('gameID');
+            // Truy vấn đến bảng users
+            $topUsers = DB::table('user')
+                // Chọn cột của user và cột total_score trong bảng user_answers
+                ->select('user.id', 'user.name', DB::raw('SUM(user_answer.score) as total_score'))
+                ->where('user_answer.game_id',$game_id)
+
+                // Kết hợp bảng users với bảng user_answer để lấy điểm số của từng người chơi
+                ->join('user_answer', 'user.id', '=', 'user_answer.user_id')
+                // Nhóm kết quả theo các cột cụ thể
+                ->groupBy('user.id', 'user.name')
+                ->orderBy('total_score', 'desc') // Sắp xếp theo điểm từ cao đến thấp
+                ->limit(5) // Giới hạn kết quả là 5 người chơi
+                ->get()
+                ->map(function ($user) {
+                    // Định dạng số thập phân với 2 chữ số sau dấu phẩy
+                    $user->total_score = number_format($user->total_score, 2);
+                    return $user;
+                });
+            return view('games.score', [
+                'game' => $game,
+                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score','!=', 0)->count(),
+                'totalQuestions' => $totalQuestions,
+                'topUsers' => $topUsers,
+            ]);
         }
-        return redirect('/quiz/' . $question->game_id);
-    }
-    public function createOrPlayGame(Request $request)
-    {
-        $type = $request->input('type');
-//        dd($type);
-        if ($type == "continue") {
-            $gameId = $request->input('gameId');
-            return redirect()->route('start', ['id' => $gameId]);
-        } else if ($type == "create") {
-            return redirect()->route('showForm');
+
+        $question = Question::findOrFail($questionId);
+
+        $user_answer = new UserAnswer();
+        $user_answer->user_id = $userId;
+        $user_answer->game_id = $gameId;
+        $user_answer->question_id = $questionId;
+        $user_answer->selected_answer = $answer;
+        $user_answer->score = 0;
+        $scoreQuestion = 100/$totalQuestions;
+        $timeLeft = $request->input('time_left');
+
+        if ($answer == $question->correct_answer) {
+            $user_answer->score = round($scoreQuestion * ($timeLeft / 30), 2);
+            $user_answer->time_taken = $timeLeft;
+        }
+        $user_answer->save();
+
+        // Đếm số câu trả lời đúng của người dùng
+//        $correctAnswersCount = UserAnswer::where('game_id', $gameId)
+//            ->where('user_id', $userId)
+//            ->where('score', '!=', 0)
+//            ->count();
+
+        $currentQuestionIndex = Session::get('currentQuestionIndex');
+        // Kiểm tra nếu vẫn còn câu hỏi tiếp theo
+        if ($currentQuestionIndex < $totalQuestions - 1) {
+            // Tăng chỉ số câu hỏi hiện tại
+            Session::put('currentQuestionIndex', $currentQuestionIndex + 1);
+            $nextQuestion = $game->questions()->skip($currentQuestionIndex + 1)->first();
+
+            // Trả về view 'games.ingame' với câu hỏi tiếp theo
+            return view('games.ingame', [
+                'game' => $game,
+                'currentQuestion' => $nextQuestion,
+                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score', '!=', 0)->count(),
+                'totalQuestions' => $totalQuestions,
+            ]);
+        } else {
+            $game_id = Session::get('gameID');
+            // Truy vấn đến bảng users
+            $topUsers = DB::table('user')
+                // Chọn cột của user và cột total_score trong bảng user_answers
+                ->select('user.id', 'user.name', DB::raw('SUM(user_answer.score) as total_score'))
+                ->where('user_answer.game_id',$game_id)
+
+                // Kết hợp bảng users với bảng user_answer để lấy điểm số của từng người chơi
+                ->join('user_answer', 'user.id', '=', 'user_answer.user_id')
+                // Nhóm kết quả theo các cột cụ thể
+                ->groupBy('user.id', 'user.name')
+                ->orderBy('total_score', 'desc') // Sắp xếp theo điểm từ cao đến thấp
+                ->limit(5) // Giới hạn kết quả là 3 người chơi
+                ->get()
+                ->map(function ($user) {
+                    // Định dạng số thập phân với 2 chữ số sau dấu phẩy
+                    $user->total_score = number_format($user->total_score, 2);
+                    return $user;
+                });
+            // Hiển thị kết quả cuối cùng
+            return view('games.score', [
+                'game' => $game,
+                'correctAnswers' => UserAnswer::where('game_id', $gameId)->where('user_id', $userId)->where('score','!=', 0)->count(),
+                'totalQuestions' => $totalQuestions,
+                'topUsers' => $topUsers,
+            ]);
         }
     }
-
-    public function viewSearch()
-    {
-        return view('searchIdGame');
-    }
-
-    public function showAnswer()
-    {
-
-    }
-
-
-
 }

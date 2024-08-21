@@ -14,7 +14,6 @@ class TopicController extends Controller
 {
     public function saveAll()
     {
-        return ;
     }
     public function viewTopic()
     {
@@ -45,14 +44,61 @@ class TopicController extends Controller
         }
 //        dd($type);
     }
-
-    public function viewGame()
+    public function updateQuestion(Request $request)
     {
-        $usersID = Session::get('user_id');
-        $users = Users::findOrFail($usersID);
-        $topicID = Session::get('topic_id');
-//        $topics = Topic::findOrFail($topicID) ;
-        $games = Game::findOrFail($topicID);
-        return view('users.game', compact('games', 'users'));
+        $type = $request->input('type');
+        $questionId = $request->input('questionId');
+
+//        dd($questionId );
+        if($type =="update"){
+//            $questionId = $request->input('questionId');
+            $question = Question::findOrFail($questionId);
+            if($question == null){
+                // @Todo create not found page.
+                return view('404');
+            }
+            $question->content = $request->input('content');
+            // validate before save
+            $updatedAnswers = $request->input('answers');
+            foreach($question->answers as $answer){
+                if(array_key_exists($answer->id, $updatedAnswers)){
+//                    if($answer->answer_content == $question->correct_answer){
+//                        $question->correct_answer = $updatedAnswers[$answer->id];
+//                    }
+                    $answer->answer_content = $updatedAnswers[$answer->id];
+                    $answer->update(); // need update performance.
+                }
+            }
+            $question->update();
+        } else if($type =="delete"){
+            $question = Question::findOrFail($questionId);
+//            dd($questionId);
+            if($question == null){
+                // @Todo create not found page.
+                return view('404');
+            }
+            $question->content = $request->input('content');
+            // validate before save
+            $updatedAnswers = $request->input('answers');
+            foreach($question->answers as $answer){
+                if(array_key_exists($answer->id, $updatedAnswers)){
+                    if($answer->answer_content == $question->correct_answer){
+                        $question->correct_answer = $updatedAnswers[$answer->id];
+                    }
+                    $answer->answer_content = $updatedAnswers[$answer->id];
+                    $answer->delete(); // need update performance.
+                }
+            }
+            $question->delete();
+        }
+        return redirect('/user/quiz/topic/game/' . $question->game_id);
     }
+    public function viewSearch()
+    {
+        return view('searchIdGame');
+    }
+    public function search(Request $request){
+
+    }
+
 }

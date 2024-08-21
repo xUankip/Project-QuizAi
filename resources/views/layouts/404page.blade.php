@@ -16,13 +16,13 @@
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Home</a>
+                    <a href="{{route('homeUser')}}" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Create</a>
+                    <a href="{{route('showForm')}}" class="nav__link">Create</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Game</a>
+                    <a href="{{route('topic')}}" class="nav__link">Game</a>
                 </li>
             </ul>
 
@@ -41,12 +41,12 @@
     <section class="home">
         <div class="home__container container">
             <div class="home__data">
-                <span class="home__subtitle">Error 404</span>
+                <h1 class="home__subtitle">Error 404</h1>
                 <h1 class="home__title">Hey Buddy</h1>
                 <p class="home__description">
-                    We can't seem to find the page <br> you are looking for.
+                    The feature is currently under development. <br> Please wait for the next update.
                 </p>
-                <a href="#" class="home__button">
+                <a href="{{route('homeUser')}}" class="home__button">
                     Go Home
                 </a>
             </div>

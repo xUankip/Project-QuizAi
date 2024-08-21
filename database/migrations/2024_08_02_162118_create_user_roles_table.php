@@ -64,7 +64,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('question_id')->constrained('question')->onDelete('cascade');
             $table->json('answer_content');
-//            $table->json('correct_answer');
             $table->foreignId('created_by')->nullable()->constrained('user')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('user')->onDelete('set null');
             $table->foreignId('deleted_by')->nullable()->constrained('user')->onDelete('set null');

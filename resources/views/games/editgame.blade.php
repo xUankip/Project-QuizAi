@@ -44,25 +44,25 @@
                     </span>
                 <h3>Create</h3>
             </a>
-            <a href="#">
+            <a href="{{route('user.404')}}">
                     <span class="material-icons-sharp">
                         search
                     </span>
                 <h3>Search</h3>
             </a>
-            <a href="#">
+            <a href="{{route('user.404')}}">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
                 <h3>Reports</h3>
             </a>
-            <a href="#">
+            <a href="{{route('user.404')}}">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                 <h3>Settings</h3>
             </a>
-            <a href="#">
+            <a href="{{route('home')}}">
                     <span class="material-icons-sharp">
                         logout
                     </span>
