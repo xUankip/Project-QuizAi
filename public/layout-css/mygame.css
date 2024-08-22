@@ -214,20 +214,33 @@ aside .sidebar .message-count{
 /*END ASIDE*/
 
 /*CONTENT*/
-.main-content {
+.main-content{
     padding: 50px 0 0 5px;
+    display: flex;
+    flex-direction: column;
+    height: 98vh; /* Chiều cao toàn màn hình */
+}
+
+.main-content .pagination{
+    margin-top: auto; /* Đẩy pagination xuống dưới cùng */
+    padding-bottom: 20px;
+    flex-shrink: 0; /* Giữ cho pagination không bị co lại */
+}
+
+.main-content-games {
     display: flex;
     flex-wrap: wrap; /* Cho phép các phần tử tự xuống dòng */
     gap: 1.8rem;
     align-items: flex-start; /* Canh trên cùng */
+    overflow-y: auto;
+    flex: 1;
 }
 .parent{
-    height: 400px;
-    flex: 1 1 300px; /* Điều chỉnh chiều rộng và cho phép xuống dòng */
-    max-width: 350px;
-    padding: 30px;
+    height: 300px; /* Cố định chiều cao cho parent */
+    width: 300px; /* Cố định chiều rộng cho parent */
+    padding: 0 40px 40px 40px;
     perspective: 1000px;
-    box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng */
+    box-sizing: border-box;
 }
 
 .card{
@@ -235,9 +248,12 @@ aside .sidebar .message-count{
     transform-style: preserve-3d;
     background-image: url('/images/img1.jpg');
     background-position: center center;
-    width: 100%;
+    width: 100%; /* Giữ nguyên chiều rộng */
+    max-width: 300px; /* Đặt chiều rộng tối đa */
+    height: 300px; /* Cố định chiều cao */
     transition: all 0.5s ease-in-out;
     border-radius: 10px;
+
 }
 
 .card:hover{
@@ -248,20 +264,34 @@ aside .sidebar .message-count{
 .content-box{
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.811);
+    background-color: rgba(0, 0, 0, 0.81);
     border-radius: 0px 0px 10px 10px;
     box-shadow: rgba(0,115,255,0.925) 0px 20px 50px -25px;
     transition: all 0.5s ease-in-out;
     padding: 50px 25px 25px 25px;
     transform-style: preserve-3d;
+    overflow: hidden; /* Tránh tràn nội dung khi dữ liệu quá dài */
 }
 
 .card-topic{
     color: white;
-    font-size: 25px;
-    font-weight: 900;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     transition: all 0.5s ease-in-out;
     transform: translate3d(0px,0px,20px);
+    overflow: hidden; /* Ẩn nội dung tràn */
+    text-overflow: ellipsis; /* Thêm dấu "..." khi nội dung bị cắt */
+    /*white-space: nowrap; !* Không xuống dòng *!*/
+
+}
+
+.card-topic {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-topic:hover{
@@ -270,7 +300,7 @@ aside .sidebar .message-count{
 
 .card-description{
     padding-top: 15px;
-    font-size: 12px;
+    font-size: 10px;
     color: rgb(185,185,185);
     transition: all 0.5s ease-in-out;
     transform: translate3d(0px,0px,20px);

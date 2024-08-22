@@ -17,7 +17,7 @@ class TopicController extends Controller
     }
     public function viewTopic()
     {
-        $topic = Topic::paginate(4);
+        $topic = Topic::paginate(6);
         $usersID = Session::get('user_id');
         $users = Users::findOrFail($usersID);
         return view('games.mygame', compact('topic', 'users'));
