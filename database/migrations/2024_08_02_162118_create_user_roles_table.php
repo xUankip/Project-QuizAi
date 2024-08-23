@@ -62,6 +62,7 @@ return new class extends Migration {
         });
         Schema::create('answer', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('question_id')->constrained('question')->onDelete('cascade');
             $table->json('answer_content');
             $table->foreignId('created_by')->nullable()->constrained('user')->onDelete('set null');
@@ -94,3 +95,4 @@ return new class extends Migration {
         Schema::dropIfExists('topic');
     }
 };
+

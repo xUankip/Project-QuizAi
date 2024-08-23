@@ -46,3 +46,25 @@ Route::get('/user/topUsers',[UserAnswerController::class,'topUser'])->name('topU
 Route::get('/user/userScore',[UserAnswerController::class,'userScore'])->name('userScore');
 
 Route::get('/user/404',function (){ return view('layouts.404page');})->name('user.404');
+
+
+//admin//
+use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\MainController;
+
+Route::get('admin/users/login', [LoginController::class, 'index'])->name('logins');
+Route::post('admin/users/login/home', [LoginController::class, 'home'])->name('admin.login.home');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/admin/users/update/{id}', [MainController::class, 'updateUser']);
+
+    Route::get('admin/users/search', [MainController::class, 'searchUsers'])->name('admin.users.search');
+    Route::get('admin/main', [MainController::class, 'index'])->name('admin');
+    Route::post('admin/users/add', [MainController::class, 'addUser'])->name('admin.users.add');
+    Route::get('admin/users/edit/{id}', [MainController::class, 'editUser'])->name('admin.users.edit');
+    Route::post('admin/users/delete/{id}', [MainController::class, 'deleteUser'])->name('admin.users.delete');
+    Route::post('admin/users/toggle/{id}', [MainController::class, 'toggleUserStatus'])->name('admin.users.toggle');
+    Route::post('admin/games/delete/{id}', [MainController::class, 'deleteGame'])->name('admin.games.delete');
+});
+

@@ -46,7 +46,7 @@
                 <h3>Games</h3>
             </a>
             <a href="#">G
-                    <span class="material-icons-sharp">
+                <span class="material-icons-sharp">
                         search
                     </span>
                 <h3>Search</h3>
