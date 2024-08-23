@@ -34,7 +34,7 @@ class MainController extends Controller
             'questions_count' => Question::count()
         ];
 
-        return view('admin.main', compact('users', 'games', 'topUsers', 'overview'));
+        return view('games.gamesadmin', compact('users', 'games', 'topUsers', 'overview'));
     }
 
     public function searchUsers(Request $request)
