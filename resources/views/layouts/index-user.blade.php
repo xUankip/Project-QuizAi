@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('layout-css/mygame.css') }}">
     <link rel="stylesheet" href="{{ asset('layout-css/generate.css') }}">
     <title>Demo Admin Page-QuizAI</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
