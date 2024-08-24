@@ -21,6 +21,7 @@
             <li><a href="{{route('login')}}">Login</a></li>
             <li><a href="{{route('register')}}">Register</a></li>
         </ul>
+
     </nav>
     <span class="letter-s">AI</span>
     <img src="/images/img7.png" alt="header" />

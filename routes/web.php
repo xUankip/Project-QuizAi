@@ -12,7 +12,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserAnswerController;
 
 
-Route::get('/', [UserController::class,'viewIndex'])->name('home');
+Route::get('/', [UserController::class,'viewInk outdex'])->name('home');
 Route::get('/user/index', [UserController::class,'viewHome'])->name('homeUser');
 Route::get('/user/login', [UserController::class, 'viewLogin'])->name('login');
 Route::post('/user/login', [UserController::class, 'loginPost'])->name('login.post');
