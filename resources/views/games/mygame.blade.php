@@ -2,6 +2,11 @@
 @section('content')
     <div class="main-content">
         <div class="main-content-games">
+            <form action="{{ route('searchTopic') }}" method="get">
+                @csrf
+                <input type="text" name="topicId" placeholder="Search..." >
+                <button type="submit">Search</button>
+            </form>
             @foreach($topic as $topics)
                 <form action="{{route('saveId')}}" method="post">
                     @csrf
@@ -14,7 +19,9 @@
                                 <p class="card-description">
                                     {{$topics->description}}
                                 </p>
-                                <button style="background-color: transparent; border : none" type="submit" class="play">Show Detail</button>
+                                <button style="background-color: transparent; border : none" type="submit" class="play">
+                                    Show Detail
+                                </button>
                             </div>
                             <div class="qr-box">
                                 <img src="{{asset('images/img10.jpeg')}}" alt="">

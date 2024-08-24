@@ -12,8 +12,17 @@ use Illuminate\Support\Facades\Session;
 
 class TopicController extends Controller
 {
-    public function saveAll()
+    public function searchTopic(Request $request)
     {
+        try {
+            $topicId = $request->input('topicId');
+            $topic = Topic::find($topicId);
+            $usersID = Session::get('user_id');
+            $users = Users::findOrFail($usersID);
+            return view('games.searchTopic', compact('topic', 'users'));
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('error', 'Topic not found.');
+        }
     }
     public function viewTopic()
     {
@@ -35,14 +44,11 @@ class TopicController extends Controller
             $games = Game::where('topic_id', $typeId)->first(); // Lấy trò chơi đầu tiên hoặc null
 
             if ($games) {
-                // Chuyển hướng tới trang bắt đầu với ID của trò chơi đầu tiên
                 return redirect()->route('start', ['id' => $games->id]);
             } else {
-                // Không có trò chơi nào được tìm thấy, xử lý theo cách khác (chẳng hạn thông báo lỗi)
-                return redirect()->back()->with('error', 'No games found for this topic.');
+                return redirect()->back()->with('error','No games found for this topic');
             }
         }
-//        dd($type);
     }
     public function updateQuestion(Request $request)
     {
