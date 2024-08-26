@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizAi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dist/css/game-start.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 @if(session('error'))
-    <div class="alert alert-warning">
-        {{ session('error') }}
-    </div>
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: '{{session('error')}}',
+            confirmButtonText: 'OK'
+        });
+    </script>
 @endif
 <section class="wrapper">
+    <form style="display: none" action="{{route('topic')}}" method="get" name="backForm">
+        @csrf
+    </form>
     <form action="{{route('start.post', ['id' => $games->id])}}" method="post">
         @csrf
         <div class="container">
@@ -29,7 +41,6 @@
                     <div class="rule">5.You'll get points on the basis of your correct answers.</div>
                 </div>
             </div>
-
             <div class="content-qr">
                 <script src=
                             "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
@@ -37,20 +48,18 @@
                 <div id="qrcode">
                 </div>
                 <script>
-                    var qrcode = new QRCode("qrcode","{{$link}}");
+                    var qrcode = new QRCode("qrcode", "{{$link}}");
                 </script>
             </div>
-
             <div class="content">
                 <h2 class="description">{{$games->name}}</h2>
-
                 <div class="game-details">
                     <h2 class="game-name">Description:</h2>
                     <p class="game-description">{{$games->description}}</p>
                 </div>
                 <div class="buttons">
                     <button type="submit" class="button">Start</button>
-                    <button class="button">Back</button>
+                    <button type="button" class="button" onclick="submitBackForm()">Back</button>
                 </div>
             </div>
         </div>
@@ -59,6 +68,9 @@
 </body>
 </html>
 <script>
+    function submitBackForm() {
+        document.forms['backForm'].submit();
+    }
 
 </script>
 
