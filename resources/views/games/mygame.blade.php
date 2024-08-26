@@ -5,8 +5,8 @@
             <form action="{{ route('searchTopic') }}" method="get">
                 @csrf
                 <div class="input-group">
-                    <input type="search" placeholder="Search Data...">
-                    <img src="/images/img9.png" alt="">
+                    <input type="search" name="topicId" placeholder="Search Data...">
+                    <button type="submit"><img src="/images/img9.png" alt=""></button>
                 </div>
             </form>
         </div>

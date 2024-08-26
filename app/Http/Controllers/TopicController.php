@@ -68,9 +68,9 @@ class TopicController extends Controller
             $updatedAnswers = $request->input('answers');
             foreach($question->answers as $answer){
                 if(array_key_exists($answer->id, $updatedAnswers)){
-//                    if($answer->answer_content == $question->correct_answer){
-//                        $question->correct_answer = $updatedAnswers[$answer->id];
-//                    }
+                    if($answer->answer_content == $question->correct_answer){
+                        $question->correct_answer = $updatedAnswers[$answer->id];
+                    }
                     $answer->answer_content = $updatedAnswers[$answer->id];
                     $answer->update(); // need update performance.
                 }
