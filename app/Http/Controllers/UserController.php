@@ -31,6 +31,7 @@ class UserController extends Controller
                         // Lưu id
                         Session::put('user_id', $users->id);
                         $usersID = $users->id;
+                        return redirect()->route('homeUser', $usersID);
                     } else {
                         return redirect()->route('login')->with('errorPassword', 'sai mật khẩu');
                     }
@@ -42,8 +43,6 @@ class UserController extends Controller
             }
         } catch (Exception $exception) {
             return redirect()->route('login')->with('errorAccount', $exception->getMessage());
-        } finally {
-            return redirect()->route('homeUser', $usersID);
         }
     }
 

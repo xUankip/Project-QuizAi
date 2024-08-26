@@ -235,11 +235,11 @@ aside .sidebar .message-count{
     margin-left: 50px;
 }
 
-.input-group:hover {
-    width: 45%;
-    background-color: #fff8;
-    box-shadow: 0 .1rem .4rem #0002;
-}
+/*.input-group:hover {*/
+/*    width: 45%;*/
+/*    background-color: #fff8;*/
+/*    box-shadow: 0 .1rem .4rem #0002;*/
+/*}*/
 
 .input-group img {
     width: 1.2rem;

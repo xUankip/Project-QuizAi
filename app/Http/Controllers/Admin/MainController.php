@@ -24,7 +24,9 @@ class MainController extends Controller
             ->select('user_id', DB::raw('SUM(score) as total_score'))
             ->groupBy('user_id')
             ->orderBy('total_score', 'desc')
+
             ->limit(100)
+
             ->get();
 
         $overview = [

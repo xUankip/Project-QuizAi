@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/users/logout', function (){
         $users = \App\Models\Users::paginate(5);
+
         return view('admin.users', compact('users'));
     })->name('admin.users');
     Route::get('admin/users/search', [MainController::class, 'searchUsers'])->name('admin.users.search');
