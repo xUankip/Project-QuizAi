@@ -23,7 +23,10 @@ Route::post('/user/update', [UserController::class, 'update'])->name('update.pos
 Route::get('/user/update/updatePassword', [UserController::class, 'viewUpdatePassword'])->name('updatePassword');
 Route::post('/user/update/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword.post');
 
+
 Route::get('/user/topic',[TopicController::class,'viewTopic'])->name('topic');
+Route::get('/user/topic/search', [TopicController::class, 'searchTopic'])->name('searchTopic');
+//Route::get('/user/topic',[TopicController::class,'searchTopic'])->name('searchTopic');
 Route::post('/user/topic',[TopicController::class, 'saveIdType'])->name('saveId');
 Route::post('/user/questions/update', [TopicController::class, 'updateQuestion'])->name('updateQuestion');
 Route::get('/user/search',[TopicController::class,'viewSearch'])->name('viewSearch');
@@ -40,7 +43,7 @@ Route::post('/user/quiz', [QuizController::class, 'generateQuiz'])->name('genera
 Route::get('/user/quiz/topic/game/{id}', [QuizController::class, 'playGame'])->name('playGame');
 Route::post('/user/quiz/createOrPlayGame', [QuizController::class, 'createOrPlayGame'])->name('createOrPlayGame');
 
-Route::post('/user/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');
+//Route::post('/user/saveAll', [TopicController::class, 'saveAll'])->name('saveAll');
 
 Route::get('/user/topUsers',[UserAnswerController::class,'topUser'])->name('topUsers');
 Route::get('/user/userScore',[UserAnswerController::class,'userScore'])->name('userScore');
@@ -58,9 +61,9 @@ Route::post('admin/users/login/home', [LoginController::class, 'home'])->name('a
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/admin/users/update/{id}', [MainController::class, 'updateUser']);
+
     Route::get('/admin/users/logout', function (){
-        $users = \App\Models\Users::paginate(5);
-//        $lastPage = $users->lastPage();
+        $users = Users::paginate(5);
         return view('admin.users', compact('users'));
     })->name('admin.users');
     Route::get('admin/users/search', [MainController::class, 'searchUsers'])->name('admin.users.search');

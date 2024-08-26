@@ -1,6 +1,15 @@
 @extends('layouts.index-user')
 @section('content')
     <div class="main-content">
+        <div class="search-box">
+            <form action="{{ route('searchTopic') }}" method="get">
+                @csrf
+                <div class="input-group">
+                    <input type="search" placeholder="Search Data...">
+                    <img src="/images/img9.png" alt="">
+                </div>
+            </form>
+        </div>
         <div class="main-content-games">
             @foreach($topic as $topics)
                 <form action="{{route('saveId')}}" method="post">
@@ -14,7 +23,9 @@
                                 <p class="card-description">
                                     {{$topics->description}}
                                 </p>
-                                <button style="background-color: transparent; border : none" type="submit" class="play">Show Detail</button>
+                                <button style="background-color: transparent; border : none" type="submit" class="play">
+                                    Show Detail
+                                </button>
                             </div>
                             <div class="qr-box">
                                 <img src="{{asset('images/img10.jpeg')}}" alt="">
