@@ -45,12 +45,7 @@
                     </span>
                 <h3>Games</h3>
             </a>
-            <a href="#">G
-                <span class="material-icons-sharp">
-                        search
-                    </span>
-                <h3>Search</h3>
-            </a>
+
 
             <a href="#">
                     <span class="material-icons-sharp">
@@ -64,13 +59,8 @@
                     </span>
                 <h3>Settings</h3>
             </a>
-            <a href="#">
-                    <span class="material-icons-sharp">
-                        add
-                    </span>
-                <h3>New Login</h3>
-            </a>
-            <a href="#">
+
+            <a href="{{route('logins')}}">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -86,10 +76,7 @@
         <div class="main-content">
             <section class="table__header">
                 <h1>Quản lý Games</h1>
-                <div class="input-group">
-                    <input type="search" placeholder="Search Data...">
-                    <img src="/images/img9.png" alt="">
-                </div>
+
 {{--                <div class="export__file">--}}
 {{--                    <label for="export-file" class="export__file-btn" title="Export File"></label>--}}
 {{--                    <input type="checkbox" id="export-file">--}}
@@ -122,7 +109,7 @@
                                 <form action="{{ route('admin.games.delete', $game->id) }}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <button type="submit">Xóa</button>
+                                    <button>Xóa</button>
                                 </form>
                             </td>
                         </tr>
