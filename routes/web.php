@@ -60,7 +60,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/users/update/{id}', [MainController::class, 'updateUser']);
     Route::get('/admin/users/logout', function (){
         $users = \App\Models\Users::paginate(5);
-//        $lastPage = $users->lastPage();
         return view('admin.users', compact('users'));
     })->name('admin.users');
     Route::get('admin/users/search', [MainController::class, 'searchUsers'])->name('admin.users.search');
