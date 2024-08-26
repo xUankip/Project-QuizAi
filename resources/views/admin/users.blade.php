@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('layout-css/gamesadmin.css') }}">
+    <link rel="stylesheet" href="{{ asset('layout-css/user.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -39,13 +39,13 @@
                     </span>
                 <h3>Users</h3>
             </a>
-            <a href="#" class="active">
+            <a href="{{route('admin')}}">
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
                 <h3>Games</h3>
             </a>
-            <a href="#">G
+            <a href="#">
                 <span class="material-icons-sharp">
                         search
                     </span>
@@ -85,14 +85,14 @@
     <main class="table" id="customers_table">
         <div class="main-content">
             <section class="table__header">
-                <h1>Quản lý Games</h1>
+                <h1>Quản lý Người Dùng</h1>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                     <img src="/images/img9.png" alt="">
                 </div>
-{{--                <div class="export__file">--}}
-{{--                    <label for="export-file" class="export__file-btn" title="Export File"></label>--}}
-{{--                    <input type="checkbox" id="export-file">--}}
+                <div class="export__file">
+                    <label for="export-file" class="export__file-btn" title="Export File"></label>
+                    <input type="checkbox" id="export-file">
 {{--                    <div class="export__file-options">--}}
 {{--                        <label>Export As &nbsp; &#10140;</label>--}}
 {{--                        <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>--}}
@@ -107,19 +107,30 @@
                     <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Tên game<span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Mô tả <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Hành động <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Tên <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Tên người dùng <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Trạng thái <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Hành động <span class="icon-arrow"></span></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($games as $game)
+                    @foreach($users as $user)
                         <tr>
-                            <td>{{ $game->id }}</td>
-                            <td>{{ $game->name }}</td>
-                            <td>{{ $game->description }}</td>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->user_name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->status ? 'Kích hoạt' : 'Khóa' }}</td>
                             <td>
-                                <form action="{{ route('admin.games.delete', $game->id) }}" method="POST">
+                                <!-- Form toggle trạng thái người dùng -->
+                                <form action="{{ route('admin.users.toggle', $user->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit">{{ $user->status ? 'Khóa' : 'Mở khóa' }}</button>
+                                </form>
+
+                                <!-- Form xóa người dùng -->
+                                <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('POST')
                                     <button type="submit">Xóa</button>
@@ -131,19 +142,45 @@
                 </table>
 
             </section>
-            <div class="pagination">
-                @include('layouts.default', ['paginator' => $users])
-            </div>
-
-
-            <section class="table_header">
-                <h1>Báo Cáo Tổng Quan</h1>
-                <p>Số lượng người dùng: {{ $overview['users_count'] }}</p>
-                <p>Số lượng game: {{ $overview['games_count'] }}</p>
-                <p>Số lượng câu hỏi: {{ $overview['questions_count'] }}</p>
-            </section>
         </div>
 
+        <div class="pagination">
+            @include('layouts.default', ['paginator' => $users])
+        </div>
+
+
+{{--        <section class="table__body">--}}
+{{--            <table>--}}
+{{--                <thead>--}}
+{{--                <tr>--}}
+{{--                    <th> Id <span class="icon-arrow">&UpArrow;</span></th>--}}
+{{--                    <th> Tên game<span class="icon-arrow">&UpArrow;</span></th>--}}
+{{--                    <th> Mô tả <span class="icon-arrow">&UpArrow;</span></th>--}}
+{{--                    <th> Hành động <span class="icon-arrow">&UpArrow;</span></th>--}}
+{{--                </tr>--}}
+{{--                </thead>--}}
+{{--                <tbody>--}}
+{{--                @foreach($games as $game)--}}
+{{--                    <tr>--}}
+{{--                        <td>{{ $game->id }}</td>--}}
+{{--                        <td>{{ $game->name }}</td>--}}
+{{--                        <td>{{ $game->description }}</td>--}}
+{{--                        <td>--}}
+{{--                            <form action="{{ route('admin.games.delete', $game->id) }}" method="POST">--}}
+{{--                                @csrf--}}
+{{--                                @method('POST')--}}
+{{--                                <button type="submit">Xóa</button>--}}
+{{--                            </form>--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
+{{--                @endforeach--}}
+{{--                </tbody>--}}
+{{--            </table>--}}
+
+{{--        </section>--}}
+{{--        <div class="pagination">--}}
+{{--            @include('layouts.default', ['paginator' => $users])--}}
+{{--        </div>--}}
 
 
 

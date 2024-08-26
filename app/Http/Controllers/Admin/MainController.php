@@ -18,7 +18,6 @@ class MainController extends Controller
 
         $users = User::paginate(5);
 
-
         $games = Game::paginate(5);
 
         $topUsers = DB::table('user_answer')
@@ -34,7 +33,7 @@ class MainController extends Controller
             'questions_count' => Question::count()
         ];
 
-        return view('games.gamesadmin', compact('users', 'games', 'topUsers', 'overview'));
+        return view('admin.main', compact('users', 'games', 'topUsers', 'overview'));
     }
 
     public function searchUsers(Request $request)
@@ -43,7 +42,7 @@ class MainController extends Controller
 
         $users = Admin::where('name', 'like', "%{$query}%")
             ->orWhere('email', 'like', "%{$query}%")
-            ->paginate(5);
+            ->paginate(2);
 
         return view('admin.main', compact('users'));
     }
@@ -63,7 +62,7 @@ class MainController extends Controller
         ]);
 
 
-        $users = Admin::paginate(10);
+        $users = Admin::paginate(2);
         return response()->json([
             'success' => 'Người dùng đã được thêm thành công!',
             'users' => $users,
