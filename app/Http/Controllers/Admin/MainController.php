@@ -24,7 +24,7 @@ class MainController extends Controller
             ->select('user_id', DB::raw('SUM(score) as total_score'))
             ->groupBy('user_id')
             ->orderBy('total_score', 'desc')
-            ->limit(10)
+            ->limit(100)
             ->get();
 
         $overview = [
@@ -74,7 +74,7 @@ class MainController extends Controller
     public function deleteUser($id)
     {
         User::destroy($id);
-        return redirect()->route('admin')->with('success', 'Người dùng đã được xóa thành công.');
+        return redirect()->route('admin.users')->with('success', 'Người dùng đã được xóa thành công.');
     }
 
     public function toggleUserStatus($id)
@@ -83,14 +83,14 @@ class MainController extends Controller
         $user->status = !$user->status;
         $user->save();
 
-        return redirect()->route('admin')->with('success', 'Trạng thái người dùng đã được cập nhật.');
+        return redirect()->route('admin.users')->with('success', 'Trạng thái người dùng đã được cập nhật.');
     }
 
 
     public function deleteGame($id)
     {
         Game::destroy($id);
-        return redirect()->route('admin')->with('success', 'Game đã được xóa thành công.');
+        return redirect()->route('admin.users')->with('success', 'Game đã được xóa thành công.');
     }
 }
 
