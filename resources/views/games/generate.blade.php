@@ -123,7 +123,7 @@
 
                 </div>
                 <div class="profile-photo">
-                    <img src="/images/img6.png">
+                    <img src="/images/avt.jpg">
                 </div>
             </div>
 

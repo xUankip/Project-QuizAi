@@ -222,7 +222,7 @@
                     <p>Hey, <b>Tuan Anh</b></p>
                 </div>
                 <div class="profile-photo">
-                    <img src="/images/img6.png">
+                    <img src="/images/avt.jpg">
                 </div>
             </div>
 
