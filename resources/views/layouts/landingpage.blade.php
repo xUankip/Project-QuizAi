@@ -13,9 +13,7 @@
 <div class="container">
     <nav>
         <ul class="nav__links nav__left">
-            <li><a href="#" class="logo">Quiz AI</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="{{route('user.404landingpage')}}" class="logo">Quiz AI</a></li>
         </ul>
         <ul class="nav__links nav__right">
             <li><a href="{{route('login')}}">Login</a></li>
@@ -26,7 +24,7 @@
     <img src="/images/img7.png" alt="header" />
     <h4 class="text__left">QU</h4>
     <h4 class="text__right">IZ</h4>
-    <a href="{{route('topic')}}"><button class="btn explore" >START EXPLORE</button></a>
+    <a href="{{route('user.404landingpage')}}"><button class="btn explore" >START EXPLORE</button></a>
 {{--    <button class="btn print">CREATE</button>--}}
 {{--    <button class="btn catalog">GAMES</button>--}}
     <h5 class="feature-1">Simplify</h5>
@@ -36,9 +34,9 @@
     <footer class="footer">
         <p>Desgin and Develop by Aptech's students</p>
         <div class="footer__links">
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Twitter</a></li>
+            <li><a href="{{route('user.404landingpage')}}">Facebook</a></li>
+            <li><a href="{{route('user.404landingpage')}}">Instagram</a></li>
+            <li><a href="{{route('user.404landingpage')}}">Twitter</a></li>
         </div>
     </footer>
 </div>

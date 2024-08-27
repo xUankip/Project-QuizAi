@@ -49,7 +49,7 @@ Route::get('/user/topUsers',[UserAnswerController::class,'topUser'])->name('topU
 Route::get('/user/userScore',[UserAnswerController::class,'userScore'])->name('userScore');
 
 Route::get('/user/404',function (){ return view('layouts.404page');})->name('user.404');
-
+Route::get('/404',function (){ return view('layouts.404pagelandingpage');})->name('user.404landingpage');
 
 //admin//
 use App\Http\Controllers\Admin\Users\LoginController;
