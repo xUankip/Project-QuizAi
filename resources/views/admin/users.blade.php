@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="#">
+            <a href="{{route('404')}}">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -47,13 +47,13 @@
             </a>
 
 
-            <a href="#">
+            <a href="{{route('404')}}">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
                 <h3>Reports</h3>
             </a>
-            <a href="#">
+            <a href="{{route('404')}}">
                     <span class="material-icons-sharp">
                         settings
                     </span>
