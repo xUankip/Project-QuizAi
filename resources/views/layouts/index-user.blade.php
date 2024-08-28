@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('layout-css/mygame.css') }}">
     <link rel="stylesheet" href="{{ asset('layout-css/generate.css') }}">
+    <link rel="stylesheet" href="{{ asset('layout-css/welcomeHomeUser.css') }}">
     <title>Demo Admin Page-QuizAI</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
