@@ -24,7 +24,7 @@
     <img src="/images/img7.png" alt="header" />
     <h4 class="text__left">QU</h4>
     <h4 class="text__right">IZ</h4>
-    <a href="{{route('user.404landingpage')}}"><button class="btn explore" >START EXPLORE</button></a>
+    <a href="{{route('login')}}"><button class="btn explore" >START EXPLORE</button></a>
 {{--    <button class="btn print">CREATE</button>--}}
 {{--    <button class="btn catalog">GAMES</button>--}}
     <h5 class="feature-1">Simplify</h5>

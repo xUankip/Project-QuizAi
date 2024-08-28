@@ -27,12 +27,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="{{route('404')}}">
-                    <span class="material-icons-sharp">
-                        dashboard
-                    </span>
-                <h3>Home</h3>
-            </a>
+
             <a href="{{route('admin.users')}}">
                     <span class="material-icons-sharp">
                         person_outline

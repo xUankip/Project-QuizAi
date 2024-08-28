@@ -68,24 +68,25 @@
                     </div>
 
 
-                    <div class="d-flex justify-content-between align-items-center">
-                        <!-- Checkbox -->
-                        <div class="form-check mb-0">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" required/>
-                            <label class="form-check-label" for="form2Example3">
-                                Remember me
-                            </label>
-                        </div>
-                        <a href="#!" class="text-body">Forgot password?</a>
-                    </div>
+{{--                    <div class="d-flex justify-content-between align-items-center">--}}
+{{--                        <!-- Checkbox -->--}}
+{{--                        <div class="form-check mb-0">--}}
+{{--                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" required/>--}}
+{{--                            <label class="form-check-label" for="form2Example3">--}}
+{{--                                Remember me--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
+{{--                        <a href="#!" class="text-body">Forgot password?</a>--}}
+{{--                    </div>--}}
 
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login
                         </button>
-                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+                        <a href="{{route('home')}}"><button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Home
                         </button>
+                        </a>
                         <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{route('register')}}"
                                                                                           class="link-danger">Register</a>
                         </p>
