@@ -91,9 +91,16 @@ class MainController extends Controller
 
     public function deleteGame($id)
     {
-        Game::destroy($id);
-        return redirect()->route('admin.users')->with('success', 'Game đã được xóa thành công.');
+        $game = Game::findOrFail($id);
+        foreach ($game->questions as $question) {
+            $question->answers()->delete();
+        }
+        $game->questions()->delete();
+        $game->delete();
+
+        return redirect()->route('admin')->with('success', 'Game đã được xóa thành công.');
     }
+
 }
 
 
