@@ -36,7 +36,7 @@
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>My Games</h3>
+                <h3>Games</h3>
             </a>
             <a href="{{route('showForm')}}">
                     <span class="material-icons-sharp">
@@ -44,13 +44,13 @@
                     </span>
                 <h3>Create</h3>
             </a>
-            <a href="{{route('user.404')}}">
+            <a href="{{route('user.err')}}">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
                 <h3>Reports</h3>
             </a>
-            <a href="{{route('user.404')}}">
+            <a href="{{route('user.err')}}">
                     <span class="material-icons-sharp">
                         settings
                     </span>

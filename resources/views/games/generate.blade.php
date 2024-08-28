@@ -38,7 +38,7 @@
                     <span class="material-icons-sharp">
                         sports_esports
                     </span>
-                <h3>My Games</h3>
+                <h3>Games</h3>
             </a>
             <a href="{{route('showForm')}}">
                     <span class="material-icons-sharp">
@@ -46,13 +46,13 @@
                     </span>
                 <h3>Create</h3>
             </a>
-            <a href="{{route('user.404')}}">
+            <a href="{{route('user.err')}}">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
                 <h3>Reports</h3>
             </a>
-            <a href="{{route('user.404')}}">
+            <a href="{{route('user.err')}}">
                     <span class="material-icons-sharp">
                         settings
                     </span>
@@ -132,14 +132,14 @@
     </div>
     <!-- End Right Section -->
 
-        LOADING
+{{--        LOADING--}}
     <div class="loading">
         <div class="circle" style="--a:#00e371"></div>
         <div class="circle" style="--a:#ff2756"></div>
         <div class="circle" style="--a:#f7ff09"></div>
         <span class="loading-text">Loading</span>
     </div>
-        END LOADING
+{{--        END LOADING--}}
 </div>
 <script src="{{ asset('js/generate.js') }}"></script>
 </body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Topic;
 use App\Models\User;
 use App\Models\Game;
 use App\Models\Question;
@@ -18,7 +19,7 @@ class MainController extends Controller
 
         $users = User::paginate(5);
 
-        $games = Game::paginate(5);
+        $games = Topic::paginate(5);
 
         $topUsers = DB::table('user_answer')
             ->select('user_id', DB::raw('SUM(score) as total_score'))
@@ -89,16 +90,41 @@ class MainController extends Controller
     }
 
 
+//    public function deleteGame($id)
+//    {
+//        $topic = Topic::findOrFail($id);
+//        $games = Game::findOrFail($topic);
+//        foreach ($games->questions as $question) {
+//            $question->answers()->delete();
+//        }
+//        $topic->games()->delete();
+//        $topic->questions()->delete();
+//        $topic->delete();
+//
+//        return redirect()->route('admin')->with('success', 'Game đã được xóa thành công.');
+//    }
     public function deleteGame($id)
     {
-        $game = Game::findOrFail($id);
-        foreach ($game->questions as $question) {
-            $question->answers()->delete();
-        }
-        $game->questions()->delete();
-        $game->delete();
+        $topic = Topic::findOrFail($id);
 
-        return redirect()->route('admin')->with('success', 'Game đã được xóa thành công.');
+        // Lấy game liên quan
+        $game = $topic->game;
+
+        if ($game) {
+            // Xóa các câu hỏi và câu trả lời liên quan đến game
+            foreach ($game->questions as $question) {
+                $question->answers()->delete();
+            }
+            $game->questions()->delete();
+
+            // Xóa game
+            $game->delete();
+        }
+
+        // Xóa topic
+        $topic->delete();
+
+        return redirect()->route('admin')->with('success', 'Game và Topic đã được xóa thành công.');
     }
 
 }

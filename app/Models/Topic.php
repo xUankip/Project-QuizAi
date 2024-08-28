@@ -16,4 +16,8 @@ class Topic extends Model
         'created_by',
         'updated_by',
     ];
+    public function game()
+    {
+        return $this->hasOne('App\Models\Game', 'topic_id');
+    }
 }

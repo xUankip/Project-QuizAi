@@ -75,7 +75,7 @@
     <main class="table" id="customers_table">
         <div class="main-content">
             <section class="table__header">
-                <h1>Quản lý Games</h1>
+                <h1>Quản lý Topic</h1>
 
 {{--                <div class="export__file">--}}
 {{--                    <label for="export-file" class="export__file-btn" title="Export File"></label>--}}
@@ -119,16 +119,9 @@
 
             </section>
             <div class="pagination">
-                @include('layouts.default', ['paginator' => $users])
+                @include('layouts.default', ['paginator' => $games])
             </div>
 
-
-            <section class="table_header">
-                <h1>Báo Cáo Tổng Quan</h1>
-                <p>Số lượng người dùng: {{ $overview['users_count'] }}</p>
-                <p>Số lượng game: {{ $overview['games_count'] }}</p>
-                <p>Số lượng câu hỏi: {{ $overview['questions_count'] }}</p>
-            </section>
         </div>
 
 
@@ -161,7 +154,6 @@
         <!-- End of Nav -->
     </div>
 
-</div>
 {{--    END RIGHT SECTION--}}
 
 <script src="{{ asset('js/detail.js') }}"></script>
