@@ -233,6 +233,7 @@ aside .sidebar .message-count{
     transition: .2s;
     margin-bottom: 20px;
     margin-left: 50px;
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 /*.input-group:hover {*/
@@ -437,12 +438,21 @@ aside .sidebar .message-count{
         position: relative;
         margin-top: 1.8rem;
     }
+
+    .input-group {
+        width: 80%; /* Ví dụ: thu nhỏ chiều rộng */
+    }
+
 }
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
         grid-template-columns: 1fr;
         padding: 0 var(--padding-1);
+    }
+
+    .input-group {
+        width: 70%;
     }
 
     aside {
