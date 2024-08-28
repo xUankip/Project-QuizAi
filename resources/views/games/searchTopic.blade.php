@@ -60,7 +60,6 @@
                 }
             });
         </script>
-{{--        <p>No topics available.</p>--}}
     @endif
 @endsection
 
