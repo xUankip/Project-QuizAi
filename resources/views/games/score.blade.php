@@ -30,9 +30,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($topUsers as $user)
+                    @foreach($topUsers as $index => $user)
                         <tr>
-                            <td>1</td>
+                            <td>{{$index +1 }}</td>
                             <td>{{$user -> name}}</td>
                             <td>{{$user -> total_score}}</td>
                         </tr>

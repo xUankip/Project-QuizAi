@@ -99,7 +99,7 @@
                                                        value="{{ $answer->answer_content }}"
                                                        style="{{($question->correct_answer == $answer->answer_content) ? 'color: green' : ''}}">
                                                 <span>
-                                                    {!! ($question->correct_answer == $answer->answer_content) ? '<i class="fa-solid fa-check"></i>' : '' !!}
+                                                    {!! ($question->correct_answer == $answer->answer_content) ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-x"></i>' !!}
                                                 </span>
                                             </label>
                                         </div>
