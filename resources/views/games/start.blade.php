@@ -12,13 +12,21 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-@if(session('error'))
+@if(session('displayThePlayerIsScore') || session('displayThePlayerIsResult'))
     <script>
         Swal.fire({
             icon: 'warning',
-            title: 'Oops...',
-            text: '{{session('error')}}',
-            confirmButtonText: 'OK'
+            title: ' Bạn đã chơi game này , đây là bảng điểm của bạn ',
+            html: `<strong>Score:</strong> {{ session('displayThePlayerIsScore') }}<br>
+                   <strong>Results:</strong> {{ session('displayThePlayerIsResult') }}`,
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Chi tiết',
+            showCancelButton: true,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                window.location.href = '{{ route('result') }}'; // Điều hướng đến trang chi tiết
+            }
         });
     </script>
 @endif
@@ -71,6 +79,5 @@
     function submitBackForm() {
         document.forms['backForm'].submit();
     }
-
 </script>
 

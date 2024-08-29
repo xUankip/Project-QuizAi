@@ -72,9 +72,11 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach($topUsers as $key => $user)
                         <tr>
                             <td>{{$key+1}}</td>
+
                             <td>{{$user -> name}}</td>
                             <td>{{$user -> total_score}}</td>
                         </tr>
@@ -85,7 +87,9 @@
         </div>
         <div class="content-footer">
             <form action="{{route('homeUser')}}">
+
                 <button href="" class="button">Tiếp tục</button>
+
             </form>
         </div>
     </div>

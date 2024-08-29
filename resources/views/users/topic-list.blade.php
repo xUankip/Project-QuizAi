@@ -1,6 +1,4 @@
 @extends('layouts.index-user')
-
-
 <article class="col-sm-9">
     <div class="row-items row">
         <!-- ngRepeat: subject in Subjects|limitTo: 6:begin -->
