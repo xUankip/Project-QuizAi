@@ -54,7 +54,7 @@
                 <h3>Settings</h3>
             </a>
 
-            <a href="{{route('logins')}}">
+            <a href="{{route('admin.logout')}}">
                     <span class="material-icons-sharp">
                         logout
                     </span>
