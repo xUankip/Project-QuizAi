@@ -134,10 +134,7 @@
 
 {{--        LOADING--}}
     <div class="loading">
-        <div class="circle" style="--a:#00e371"></div>
-        <div class="circle" style="--a:#ff2756"></div>
-        <div class="circle" style="--a:#f7ff09"></div>
-        <span class="loading-text">Loading</span>
+        <div class="loader"></div>
     </div>
 {{--        END LOADING--}}
 </div>

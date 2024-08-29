@@ -19,6 +19,7 @@
                         <input name="type_id" value="{{$topics->id}}" type="hidden">
                         <div class="card">
                             <div class="content-box">
+                                <p class="card-quiz">Topic:</p>
                                 <h1 class="card-topic">{{$topics->name}}</h1>
                                 <p class="card-description">
                                     {{$topics->description}}
@@ -27,9 +28,9 @@
                                     Show Detail
                                 </button>
                             </div>
-                            <div class="qr-box">
-                                <img src="{{asset('images/img10.jpeg')}}" alt="">
-                            </div>
+{{--                            <div class="qr-box">--}}
+{{--                                <img src="{{asset('images/img10.jpeg')}}" alt="">--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </form>
