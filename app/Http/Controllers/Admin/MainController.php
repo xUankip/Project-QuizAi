@@ -127,6 +127,12 @@ class MainController extends Controller
         return redirect()->route('admin')->with('success', 'Game và Topic đã được xóa thành công.');
     }
 
+    public function searchByUsername(Request $request)
+    {
+        $username = $request->input('user_name');
+        $users = User::where('user_name', 'LIKE', '%' . $username . '%')->paginate(5);
+        return view('admin.users', compact('users'))->with('success', 'Search results for username: ' . $username);
+    }
 }
 
 

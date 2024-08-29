@@ -89,7 +89,7 @@
                     <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Tên <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Tên Đầy Đủ <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Tên người dùng <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Trạng thái <span class="icon-arrow">&UpArrow;</span></th>
@@ -97,6 +97,10 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <form action="{{ route('users.searchByUsername') }}" method="GET">
+                        <input class="form-control form-control-sidebar" name="user_name" placeholder="Tìm kiếm Tên Người Dùng" aria-label="Search">
+                        <button type="submit">Tìm Kiếm</button>
+                    </form>
                     @foreach($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>

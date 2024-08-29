@@ -37,9 +37,9 @@
                                     Show Detail
                                 </button>
                             </div>
-                            <div class="qr-box">
-                                <img src="{{asset('images/img10.jpeg')}}" alt="">
-                            </div>
+{{--                            <div class="qr-box">--}}
+{{--                                <img src="{{asset('images/img10.jpeg')}}" alt="">--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </form>

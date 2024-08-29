@@ -78,5 +78,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/users/delete/{id}', [MainController::class, 'deleteUser'])->name('admin.users.delete');
     Route::post('admin/users/toggle/{id}', [MainController::class, 'toggleUserStatus'])->name('admin.users.toggle');
     Route::post('admin/games/delete/{id}', [MainController::class, 'deleteGame'])->name('admin.games.delete');
+    Route::get('admin/search/users/username', [MainController::class, 'searchByUsername'])->name('users.searchByUsername');
 });
 
