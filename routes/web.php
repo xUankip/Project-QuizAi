@@ -71,7 +71,8 @@ Route::middleware(['auth'])->group(function () {
     })->name('admin.users');
     Route::get('/user/4042',function (){ return view('admin.4042');})->name('4042');
     Route::get('/user/404',function (){ return view('admin.404page');})->name('404');
-    Route::get('admin/users/search', [MainController::class, 'searchUsers'])->name('admin.users.search');
+    Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
     Route::get('admin/main', [MainController::class, 'index'])->name('admin');
     Route::post('admin/users/add', [MainController::class, 'addUser'])->name('admin.users.add');
     Route::get('admin/users/edit/{id}', [MainController::class, 'editUser'])->name('admin.users.edit');
