@@ -37,6 +37,7 @@ Route::get('/user/game/{id}', [GameController::class, 'start'])->name('start');
 Route::post('/user/game/{id}', [GameController::class, 'checkAccount'])->name('start.post');
 Route::get('/user/game',[GameController::class,'viewPlayUsers'])->name('viewGame');
 Route::post('/user/game', [GameController::class, 'checkAnswer'])->name('checkAnswer');
+Route::get('/user/result',[GameController::class,'result'])->name('result');
 
 Route::get('/user/quiz', [QuizController::class, 'showForm'])->name('showForm');
 Route::post('/user/quiz', [QuizController::class, 'generateQuiz'])->name('generateQuiz');

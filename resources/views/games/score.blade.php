@@ -37,11 +37,11 @@
                             <td>{{$user -> total_score}}</td>
                         </tr>
                     @endforeach
-
                     </tbody>
                 </table>
             </form>
             <form action="{{route('homeUser')}}">
+                <p><span>Your score : {{ $score }}</span></p>
             <button href="" class="button">Continue</button>
             </form>
         </div>
