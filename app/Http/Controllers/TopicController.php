@@ -55,9 +55,7 @@ class TopicController extends Controller
         $type = $request->input('type');
         $questionId = $request->input('questionId');
 
-//        dd($questionId );
         if($type =="update"){
-//            $questionId = $request->input('questionId');
             $question = Question::findOrFail($questionId);
             if($question == null){
                 // @Todo create not found page.
@@ -103,8 +101,6 @@ class TopicController extends Controller
     {
         return view('searchIdGame');
     }
-    public function search(Request $request){
 
-    }
 
 }

@@ -75,7 +75,6 @@
                     <div class="card-header">
                         <h1>Edit your question:</h1>
                         <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
-                        {{--            <input name="topic" value="{{ $game->topic->name }}">--}}
                         <input name="game" value="{{ $game }}" type="hidden">
                     </div>
                     @foreach($game->questions as $index => $question)
