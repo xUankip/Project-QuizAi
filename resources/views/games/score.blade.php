@@ -57,7 +57,8 @@
                         <p>Kết quả của bạn</p>
                     </div>
                     <div class="left-side-content">
-                        <p>Số câu đúng:{{$correctAnswers}}/{{$totalQuestions}}câu</p>
+                        <p>Số câu đúng : {{$correctAnswers}} / {{$totalQuestions}} câu
+                         --- <span>Điểm của bạn : {{$score}}</span></p>
                     </div>
         </div>
         <div class="right-side-main">
@@ -87,7 +88,6 @@
         </div>
         <div class="content-footer">
             <form action="{{route('homeUser')}}">
-
                 <button href="" class="button">Tiếp tục</button>
 
             </form>
