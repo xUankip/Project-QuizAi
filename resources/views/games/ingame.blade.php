@@ -16,7 +16,7 @@
     <div class="ingame">
         <div class="ingame-header">
             <div class="ingame-time">
-                <div class="time-text">Time left:</div>
+                <div class="time-text">THỜI GIAN:</div>
                 <div class="time-sec" id="countdown">30</div>
 
             </div>

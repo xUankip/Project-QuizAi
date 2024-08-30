@@ -25,7 +25,7 @@
                                     {{$topics->description}}
                                 </p>
                                 <button style="background-color: transparent; border : none" type="submit" class="play">
-                                    Show Detail
+                                    Chi Tiết
                                 </button>
                             </div>
 {{--                            <div class="qr-box">--}}

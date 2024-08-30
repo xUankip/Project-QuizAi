@@ -102,7 +102,7 @@
                 <tr>
                     <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                     <th> User Name <span class="icon-arrow">&UpArrow;</span></th>
-                    <th> Gmail <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                     <th> Phone <span class="icon-arrow">&UpArrow;</span></th>
                     <th> Status <span class="icon-arrow">&UpArrow;</span></th>
                     <th> Action <span class="icon-arrow"></span></th>

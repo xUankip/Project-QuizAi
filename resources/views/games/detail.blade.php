@@ -75,7 +75,7 @@
                 <div class="card-header">
                     <form action="{{route('createOrPlayGame')}}" method="post" name="gameForm">
                         @csrf
-                        <h1>Edit your question:</h1>
+                        <h1>Chỉnh Sửa Câu hỏi:</h1>
                         <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
                         <input type="hidden" name="type" id="formType" value="">
                         <input type="hidden" name="gameId" value="{{$game->id}}">
@@ -106,8 +106,8 @@
                                     @endforeach
                                 </div>
                                 <div class="card-button">
-                                    <button type="submit" class="button" name="type" value="update">Save</button>
-                                    <button type="submit" class="button" name="type" value="delete">Delete</button>
+                                    <button type="submit" class="button" name="type" value="update">Lưu</button>
+                                    <button type="submit" class="button" name="type" value="delete">Xóa</button>
                                 </div>
 
                             </div>
@@ -116,8 +116,8 @@
                 @endforeach
             </div>
             <div class="card-button">
-                <button type="button" class="button" onclick="submitGameForm('continue')">Continue</button>
-                <button type="button" class="button" onclick="submitGameForm('create')">Create More</button>
+                <button type="button" class="button" onclick="submitGameForm('continue')">Tiếp Tục</button>
+                <button type="button" class="button" onclick="submitGameForm('create')">Tạo Mới</button>
             </div>
         </div>
         </form>
@@ -136,8 +136,7 @@
             </button>
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>{{old('name', $users->name ?? 'Guest')}}</b></p>
-                    <small class="text-muted">Admin</small>
+                    <p>Xin chào, <b>{{old('name', $users->name ?? 'Guest')}}</b></p>
                 </div>
                 <div class="profile-photo">
                     <img src="/images/avt.jpg">

@@ -73,7 +73,7 @@
             <div class="container-content">
                 <div class="card-content">
                     <div class="card-header">
-                        <h1>Edit your question:</h1>
+                        <h1>Chỉnh Sửa Câu hỏi:</h1>
                         <h2><strong>Topic</strong>:{{ $game->topic->name }}</h2>
                         <input name="game" value="{{ $game }}" type="hidden">
                     </div>
@@ -96,8 +96,8 @@
                                         @endforeach
                                     </div>
                                     <div class="card-button">
-                                        <button type="submit" class="button">Save</button>
-                                        <button type="delete" class="button">Delete</button>
+                                        <button type="submit" class="button">Lưu</button>
+                                        <button type="delete" class="button">Xóa</button>
                                     </div>
                                 </form>
                             </div>
@@ -105,8 +105,8 @@
                     @endforeach
                 </div>
                 <div class="card-button">
-                    <button type="submit" class="button">Continue</button>
-                    <button type="submit" class="button">Create More</button>
+                    <button type="submit" class="button">Tiếp Tục</button>
+                    <button type="submit" class="button">Tạo mới</button>
                 </div>
             </div>
         </form>
@@ -124,7 +124,7 @@
 
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>{{old('name',$users->name)}}</b></p>
+                    <p>Xin Chào, <b>{{old('name',$users->name)}}</b></p>
                     <small class="text-muted">User</small>
                 </div>
                 <div class="profile-photo">

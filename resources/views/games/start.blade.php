@@ -39,14 +39,14 @@
         <div class="container">
             <div class="rule-box">
                 <div class="rule-title">
-                    <span>Some Rules of this Quiz</span>
+                    <span>Luật chơi</span>
                 </div>
                 <div class="rule-list">
-                    <div class="rule">1.You will have only <span>30 seconds</span> per each question.</div>
-                    <div class="rule">2.Once you select your answer, it can't be undone</div>
-                    <div class="rule">3.You can't select any option once time goes off.</div>
-                    <div class="rule">4.You can't exit from the Quiz while you're playing.</div>
-                    <div class="rule">5.You'll get points on the basis of your correct answers.</div>
+                    <div class="rule">1.Bạn chỉ có <span>30 giây</span> cho mỗi câu hỏi.</div>
+                    <div class="rule">2.Một khi bạn đã trả lời, bạn sẽ không thể hoàn tác</div>
+                    <div class="rule">3.Bạn không thể chọn câu trả lời khi thời gian kết thúc.</div>
+                    <div class="rule">4.Bạn không thể thoát khi đang trong trò chơi.</div>
+                    <div class="rule">5.Bạn sẽ nhận được điểm dựa trên câu trả lời đúng của bạn.</div>
                 </div>
             </div>
             <div class="content-qr">
@@ -66,8 +66,8 @@
                     <p class="game-description">{{$games->description}}</p>
                 </div>
                 <div class="buttons">
-                    <button type="submit" class="button">Start</button>
-                    <button type="button" class="button" onclick="submitBackForm()">Back</button>
+                    <button type="submit" class="button">Bắt Đầu</button>
+                    <button type="button" class="button" onclick="submitBackForm()">Quay Lại</button>
                 </div>
             </div>
         </div>

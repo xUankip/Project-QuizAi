@@ -72,22 +72,22 @@
 {{--@section('content')--}}
     <div class="main-content">
         <div class="card-header">
-            <h3 class="card-title">CREATE QUIZ</h3>
+            <h3 class="card-title">TẠO MỚI QUIZ</h3>
         </div>
 
         <form action="{{route('generateQuiz')}}" method="post">
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Game Title</label>
+                    <label for="exampleInputEmail1">Tiêu Đề Trò Chơi</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Game Title" name="game">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Topic Title</label>
+                    <label for="exampleInputPassword1">Chủ Đề</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Topic Title" name="topic">
                 </div>
                 <div class="form-group">
-                    <label> Number of Questions</label>
+                    <label> Số Lượng Câu Hỏi</label>
                     <select class="form-control" name="number">
                         <option value="5">5</option>
                         <option value="10">10</option>
@@ -117,10 +117,7 @@
 
             <div class="profile">
                 <div class="info">
-                    <p>Hey, <b>{{old('name',$users->name)}}</b></p>
-
-                    <small class="text-muted">User</small>
-
+                    <p>Xin chào, <b>{{old('name',$users->name)}}</b></p>
                 </div>
                 <div class="profile-photo">
                     <img src="/images/avt.jpg">
